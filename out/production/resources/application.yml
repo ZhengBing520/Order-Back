@@ -1,0 +1,42 @@
+# Tomcat settings
+server:
+  port: 9090
+  compression:
+    enabled: true
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/order?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      druid:
+        initial-size: 5
+        max-active: 20
+        min-idle: 5
+        max-wait: 60000
+        pool-prepared-statements: true
+        max-pool-prepared-statement-per-connection-size: 20
+        max-open-prepared-statements: 20
+        validation-query: SELECT 1 FROM DUAL
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: true
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: 300000
+        filters: stat,wall
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: "GMT+8"
+    locale: zh_CN
+
+# MyBatis settings
+mybatis:
+  config: classpath:mybatis/mybatis.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+

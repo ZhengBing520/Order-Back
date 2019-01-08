@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <property name="log.filename" value="my-demo"/>
+    <property name="log.level" value="DEBUG"/>
+
+    <logger name="com.zb" level="${log.level}"/>
+    <!--打印sql-->
+    <logger name="com.zb.service.dao" level="DEBUG"/>
+
+    <springProfile name="dev,test">
+        <logger name="org.springframework" level="INFO" />
+        <logger name="com.zb" level="DEBUG" />
+    </springProfile>
+
+    <springProfile name="beta">
+        <logger name="org.springframework" level="INFO" />
+        <logger name="com.zb" level="DEBUG" />
+    </springProfile>
+
+    <springProfile name="release">
+        <logger name="org.springframework" level="INFO" />
+        <logger name="com.zb" level="INFO" />
+    </springProfile>
+
+</configuration>
