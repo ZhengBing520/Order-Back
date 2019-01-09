@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zb.dao.CardManagementDao">
+
+    <select id="queryPageableData" resultType="com.zb.dto.CardManagementDto" parameterType="com.zb.dto.CardManagementDto">
+        select t.id, t.cardid, t.create_time as createTime, t.update_time as updateTime from t_card_management t
+        <where>
+            <if test="null != cardid">
+                and cardid like concat('%', #{cardid} ,'%')
+            </if>
+        </where>
+
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zb.entity.CardManagement">
+        insert into t_card_management (`cardid`) values (#{cardid})
+    </insert>
+
+    <update id="update" parameterType="com.zb.entity.CardManagement">
+        update t_card_management set `cardid` = #{cardid}, update_time = #{updateTime} WHERE id = #{id}
+    </update>
+
+    <select id="selectById" parameterType="int" resultType="com.zb.entity.CardManagement">
+        select t.id,t.cardid,t.create_time as createTime, t.update_time as updateTime from t_card_management t WHERE id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from t_card_management where id = #{id}
+    </delete>
+
+</mapper>

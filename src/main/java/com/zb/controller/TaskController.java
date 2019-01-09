@@ -50,7 +50,7 @@ public class TaskController {
     @ApiOperation(value = "删除任务信息 ", notes = "删除任务信息")
     @ApiImplicitParam(name = "id", value = "任务id", dataType = "int", paramType = "query", required = true)
     @RequestMapping(value = "/del", method = RequestMethod.DELETE)
-    public Boolean delJacVehicleById(@RequestParam("id") Integer id) {
+    public Boolean del(@RequestParam("id") Integer id) {
 
         return taskService.deleteById(id);
     }

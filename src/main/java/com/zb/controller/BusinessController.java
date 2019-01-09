@@ -49,7 +49,7 @@ public class BusinessController {
     @ApiOperation(value = "删除商家信息 ", notes = "删除商家信息")
     @ApiImplicitParam(name = "id", value = "商家id", dataType = "int", paramType = "query", required = true)
     @RequestMapping(value = "/del", method = RequestMethod.DELETE)
-    public Boolean delJacVehicleById(@RequestParam("id") Integer id) {
+    public Boolean del(@RequestParam("id") Integer id) {
 
         return businessService.deleteById(id);
     }

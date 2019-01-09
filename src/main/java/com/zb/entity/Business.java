@@ -11,11 +11,24 @@ public class Business extends BaseEntity{
      */
     private String name;
 
+    /**
+     * 卡号ID
+     */
+    private Integer cardId;
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(Integer cardId) {
+        this.cardId = cardId;
     }
 }

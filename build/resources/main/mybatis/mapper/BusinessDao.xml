@@ -27,15 +27,15 @@
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zb.entity.Business">
-        insert into t_business (`name`) values (#{name})
+        insert into t_business (`name`,`card_id`) values (#{name},#{cardId})
     </insert>
 
     <update id="update" parameterType="com.zb.entity.Business">
-        update t_business set `name` = #{name}, update_time = #{updateTime} WHERE id = #{id}
+        update t_business set `name` = #{name},card_id =#{cardId}, update_time = #{updateTime} WHERE id = #{id}
     </update>
 
     <select id="selectById" parameterType="int" resultType="com.zb.entity.Business">
-        select t.id,t.name,t.create_time as createTime, t.update_time as updateTime from t_business t WHERE id = #{id}
+        select t.id,t.name,t.card_id as cardId,t.create_time as createTime, t.update_time as updateTime from t_business t WHERE id = #{id}
     </select>
 
     <delete id="delete" parameterType="int">

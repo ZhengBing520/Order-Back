@@ -34,7 +34,7 @@ public class CommissionController {
     }
 
     @RequestMapping(value = "/del", method = RequestMethod.DELETE)
-    public Boolean delJacVehicleById(@RequestParam("id") Integer id) {
+    public Boolean del(@RequestParam("id") Integer id) {
 
         return commissionService.deleteById(id);
     }

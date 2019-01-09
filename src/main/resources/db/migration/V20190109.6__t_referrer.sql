@@ -1,12 +1,12 @@
-DROP TABLE IF EXISTS t_business;
-CREATE TABLE `t_business` (
+DROP TABLE IF EXISTS t_referrer;
+CREATE TABLE `t_referrer` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
- 
-  `name` VARCHAR(50) NOT NULL COMMENT '商家名称',
-  `card_id` int(10) DEFAULT '0' COMMENT '卡号ID',
-  
+
+  `name_referrer` VARCHAR(50) NOT NULL COMMENT '介绍人姓名',
+
+
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
- 
+
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商家表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='介绍人表';
