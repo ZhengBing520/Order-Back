@@ -2,48 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77526f44-1988-4181-b067-53958e877978" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zb/controller/CardManagementController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zb/controller/ReferrerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zb/dao/CardManagementDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zb/dao/ReferrerDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zb/dto/CardManagementDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zb/dto/ReferrerDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zb/entity/CardManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zb/entity/Referrer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zb/service/CardManagementService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zb/service/ReferrerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zb/service/impl/CardManagementServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zb/service/impl/ReferrerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V20190109.6__t_referrer.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V20190109.7__t_card_management.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/CardManagementDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/ReferrerDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.0/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.0/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.0/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.0/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.0/taskHistory/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.0/taskHistory/fileSnapshots.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.0/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.0/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.0/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.0/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/zb/controller/BusinessController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/zb/controller/BusinessController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/zb/controller/CommissionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/zb/controller/CommissionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/zb/controller/TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/zb/controller/TaskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/zb/dto/BusinessDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/zb/dto/BusinessDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/zb/entity/Business.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/zb/entity/Business.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/mybatis/mapper/BusinessDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/mybatis/mapper/BusinessDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/zb/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/zb/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/zb/dto/BusinessDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/zb/dto/BusinessDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/zb/entity/Business.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/zb/entity/Business.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/mybatis/mapper/BusinessDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mybatis/mapper/BusinessDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zb/controller/BusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zb/controller/BusinessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zb/controller/CommissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zb/controller/CommissionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zb/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zb/controller/TaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zb/dto/BusinessDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zb/dto/BusinessDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zb/entity/Business.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zb/entity/Business.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V20190109.2__t_business.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V20190109.2__t_business.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BusinessDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BusinessDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/TaskDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/TaskDao.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -117,45 +80,46 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="gitignore" value="3" />
+          <entry key="gitignore" value="5" />
           <entry key="gradle" value="6" />
-          <entry key="java" value="162" />
+          <entry key="java" value="165" />
           <entry key="properties" value="2" />
           <entry key="sql" value="13" />
-          <entry key="xml" value="26" />
+          <entry key="xml" value="29" />
           <entry key="yml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="6" />
-          <entry key="JAVA" value="162" />
-          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="JAVA" value="165" />
+          <entry key="PLAIN_TEXT" value="5" />
           <entry key="Properties" value="2" />
           <entry key="SQL" value="13" />
-          <entry key="XML" value="26" />
+          <entry key="XML" value="29" />
           <entry key="YAML" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="13" />
+          <entry key="gitignore" value="19" />
           <entry key="gradle" value="145" />
-          <entry key="java" value="3636" />
+          <entry key="java" value="3658" />
           <entry key="properties" value="16" />
           <entry key="sql" value="6" />
-          <entry key="xml" value="693" />
+          <entry key="xml" value="849" />
           <entry key="yml" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="145" />
-          <entry key="JAVA" value="3636" />
-          <entry key="PLAIN_TEXT" value="13" />
+          <entry key="JAVA" value="3658" />
+          <entry key="PLAIN_TEXT" value="32" />
           <entry key="Properties" value="16" />
-          <entry key="SQL" value="24" />
-          <entry key="XML" value="675" />
+          <entry key="SQL" value="30" />
+          <entry key="XML" value="825" />
           <entry key="YAML" value="25" />
         </counts>
       </usages-collector>
@@ -163,60 +127,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/CardManagementDao.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="19" column="58" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/V20190109.6__t_referrer.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/V20190109.7__t_card_management.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="1" column="34" lean-forward="true" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/V20190109.3__t_task.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/V20190109.1__t_commission.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="1" column="29" lean-forward="true" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
@@ -226,11 +136,80 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gradle.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="48">
-              <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+              <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/TaskDao.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="24" column="59" lean-forward="true" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/CommissionDao.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="552">
+              <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/BusinessDao.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="9" column="55" lean-forward="true" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zb/dto/BusinessDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="461">
+              <caret line="21" column="26" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="26" />
+              <folding>
+                <element signature="e#586#587#0" expanded="true" />
+                <element signature="e#616#617#0" expanded="true" />
+                <element signature="e#662#663#0" expanded="true" />
+                <element signature="e#700#701#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zb/dto/TaskDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="26" column="31" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zb/dto/CommissionDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -240,15 +219,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="83">
               <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zb/entity/Business.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" column="23" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -267,7 +237,6 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Task</find>
-      <find>Commission</find>
       <find>jacAlarmRecord</find>
       <find>task</find>
       <find>BusinessDto</find>
@@ -276,7 +245,9 @@
       <find>商家</find>
       <find>business</find>
       <find>name</find>
+      <find>Commission</find>
       <find>Business</find>
+      <find>t_business</find>
     </findStrings>
     <replaceStrings>
       <replace>Commission</replace>
@@ -292,7 +263,9 @@
       <replace>cardid</replace>
       <replace>name_referrer</replace>
       <replace>Referrer</replace>
+      <replace>Task</replace>
       <replace>CardManagement</replace>
+      <replace>t_task</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -727,7 +700,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/zb/entity/Task.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/common/Constant.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/service/impl/CommissionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/service/CommissionService.java" />
@@ -741,7 +713,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/zb/service/impl/BusinessServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/service/impl/BaseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/mybatis.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/TaskDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/dto/BaseDto.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/CommissionDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/config/SwaggerConfiguration.java" />
@@ -757,11 +728,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/db/migration/V20190109.6__t_referrer.sql" />
         <option value="$PROJECT_DIR$/src/main/resources/db/migration/V20190109.7__t_card_management.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/entity/Business.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/zb/dto/BusinessDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/entity/Referrer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/dto/ReferrerDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/entity/CardManagement.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BusinessDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/dto/CardManagementDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/dao/CardManagementDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zb/dao/ReferrerDao.java" />
@@ -778,6 +747,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/ReferrerDao.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/CardManagementDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/TaskDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zb/dto/BusinessDto.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BusinessDao.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -847,25 +820,6 @@
               <item name="Order-Back" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="zb" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Order-Back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Order-Back" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="zb" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Order-Back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Order-Back" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -899,7 +853,7 @@
     <property name="SearchEverywhereHistoryKey" value="SqlSession&#9;PSI&#9;JAVA://org.apache.ibatis.session.SqlSession&#10;SessionFactory&#9;PSI&#9;JAVA://org.apache.ibatis.session.SqlSessionFactory" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547029546244" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547094349572" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../JAC-Back" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -1098,12 +1052,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1546753566137</updated>
-      <workItem from="1546753570756" duration="58268000" />
+      <workItem from="1546753570756" duration="62761000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58268000" />
+    <option name="totallyTimeSpent" value="62761000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1128,14 +1082,14 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.47438753" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.41536748" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.41536748" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="right" id="Maven Projects" weight="0.32995737" />
-      <window_info anchor="right" id="Gradle" visible="true" weight="0.32942432" />
+      <window_info anchor="right" id="Gradle" weight="0.32942432" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info anchor="right" id="Theme Preview" />
@@ -1164,13 +1118,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zb/dto/CommissionDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="18" column="32" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="18" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/g/caches/modules-2/files-2.1/io.springfox/springfox-spring-web/2.6.1/3322c13436cc726184998808e35d474acfa043fd/springfox-spring-web-2.6.1-sources.jar!/springfox/documentation/spring/web/plugins/Docket.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1185,13 +1132,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zb/dto/TaskDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1244,13 +1184,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1317,19 +1250,6 @@
             <element signature="e#243#244#0" expanded="true" />
             <element signature="e#299#300#0" expanded="true" />
             <element signature="e#347#348#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zb/dto/BusinessDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-          <folding>
-            <element signature="e#389#390#0" expanded="true" />
-            <element signature="e#418#419#0" expanded="true" />
-            <element signature="e#463#464#0" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1503,27 +1423,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/TaskDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/BusinessDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-192">
-          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/CommissionDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/V20190109.4__t_detail.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
@@ -1580,13 +1479,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/ReferrerDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/CardManagementDao.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
@@ -1601,10 +1493,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zb/dto/CommissionDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/ReferrerDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zb/dto/TaskDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="26" column="31" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/CommissionDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/gradle.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
-          <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/TaskDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="24" column="59" lean-forward="true" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zb/dto/BusinessDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="26" />
+          <folding>
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+            <element signature="e#662#663#0" expanded="true" />
+            <element signature="e#700#701#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/BusinessDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="55" lean-forward="true" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
         </state>
       </provider>
     </entry>

@@ -13,4 +13,5 @@ gradlew
 gradlew.bat
 .classpath
 .project
+.lock
 .settings/

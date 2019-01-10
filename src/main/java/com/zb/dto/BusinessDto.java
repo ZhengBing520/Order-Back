@@ -16,6 +16,11 @@ public class BusinessDto extends BaseDto{
      */
     private Integer cardId;
 
+    /**
+     * 卡号信息
+     */
+    private String cardNum;
+
     public String getName() {
         return name;
     }
@@ -30,5 +35,13 @@ public class BusinessDto extends BaseDto{
 
     public void setCardId(Integer cardId) {
         this.cardId = cardId;
+    }
+
+    public String getCardNum() {
+        return cardNum;
+    }
+
+    public void setCardNum(String cardNum) {
+        this.cardNum = cardNum;
     }
 }
