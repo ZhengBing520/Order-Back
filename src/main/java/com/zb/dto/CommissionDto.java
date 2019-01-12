@@ -1,5 +1,7 @@
 package com.zb.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.math.BigDecimal;
 
 /**
@@ -9,33 +11,39 @@ import java.math.BigDecimal;
 public class CommissionDto extends BaseDto{
 
     /**
-     * 商家ID
+     *
      */
+    @ApiModelProperty("商家ID")
     private Integer businessId;
 
     /**
-     * 商家名称
+     *
      */
+    @ApiModelProperty("商家名称")
     private String businessName;
 
     /**
-     * 价格区间中的最小值
+     *
      */
+    @ApiModelProperty("价格区间中的最小值")
     private Integer priceMin;
 
     /**
-     * 价格区间中的最大值
+     *
      */
+    @ApiModelProperty("价格区间中的最大值")
     private Integer priceMax;
 
     /**
-     * 佣金
+     *
      */
+    @ApiModelProperty("佣金")
     private BigDecimal commission;
 
     /**
-     * 成本佣金
+     *
      */
+    @ApiModelProperty("成本佣金")
     private BigDecimal commissionCost;
 
     public Integer getBusinessId() {

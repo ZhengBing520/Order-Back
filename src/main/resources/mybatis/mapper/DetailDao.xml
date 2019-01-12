@@ -64,6 +64,6 @@
     </select>
 
     <delete id="deleteByBusinessIdAndDate" >
-        delete from t_detail where t.business_id = #{businessId} and t.date_detail = #{dateDetail}
+        delete from t_detail where business_id = #{businessId} and date_detail = #{dateDetail}
     </delete>
 </mapper>

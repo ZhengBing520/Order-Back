@@ -3,7 +3,7 @@
 <mapper namespace="com.zb.dao.CardManagementDao">
 
     <select id="queryPageableData" resultType="com.zb.dto.CardManagementDto" parameterType="com.zb.dto.CardManagementDto">
-        select t.id, t.card_num as cardNum, t.create_time as createTime, t.update_time as updateTime from t_card_management t
+        select t.id, t.card_num as cardNum,t.card_num as cardNum, t.create_time as createTime, t.update_time as updateTime from t_card_management t
         <where>
             <if test="null != cardNum">
                 and card_num like concat('%', #{cardNum} ,'%')
@@ -13,15 +13,15 @@
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zb.entity.CardManagement">
-        insert into t_card_management (`card_num`) values (#{cardNum})
+        insert into t_card_management (`card_num`, `card_name`) values (#{cardNum}, #{cardName})
     </insert>
 
     <update id="update" parameterType="com.zb.entity.CardManagement">
-        update t_card_management set `card_num` = #{cardNum}, update_time = #{updateTime} WHERE id = #{id}
+        update t_card_management set `card_num` = #{cardNum},card_name = #{cardName}, update_time = #{updateTime} WHERE id = #{id}
     </update>
 
     <select id="selectById" parameterType="int" resultType="com.zb.entity.CardManagement">
-        select t.id,t.card_num as cardNum,t.create_time as createTime, t.update_time as updateTime from t_card_management t WHERE id = #{id}
+        select t.id,t.card_num as cardNum,t.card_name as cardName, t.create_time as createTime, t.update_time as updateTime from t_card_management t WHERE id = #{id}
     </select>
 
     <delete id="delete" parameterType="int">

@@ -3,7 +3,7 @@ CREATE TABLE `t_task` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `business_id` int(10) NOT NULL COMMENT '商家ID',
   `date_task` date NOT NULL COMMENT '任务日期',
-	`name_task` VARCHAR(100) DEFAULT NULL COMMENT '任务名称',
+	`name_task` VARCHAR(200) DEFAULT NULL COMMENT '任务名称',
 	`keywords` VARCHAR(50) DEFAULT NULL COMMENT '关键词',
 	`spec` VARCHAR(50) DEFAULT NULL COMMENT '规格',
 	`require` VARCHAR(200) DEFAULT NULL COMMENT '附加要求',

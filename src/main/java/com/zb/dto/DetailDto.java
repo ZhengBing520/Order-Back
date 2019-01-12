@@ -22,6 +22,7 @@ public class DetailDto extends BaseDto {
     /**
      * 
      */
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @ApiModelProperty("日期")
     private Date dateDetail;
 
@@ -57,11 +58,11 @@ public class DetailDto extends BaseDto {
 
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @ApiModelProperty(value = "开始时间")
-    private Date startDate;
+    private Date startTime;
 
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @ApiModelProperty(value = "结束时间")
-    private Date endDate;
+    private Date endTime;
 
     public Integer getBusinessId() {
         return businessId;
@@ -125,5 +126,21 @@ public class DetailDto extends BaseDto {
 
     public void setBusinessName(String businessName) {
         this.businessName = businessName;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 }

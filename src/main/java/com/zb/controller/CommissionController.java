@@ -3,6 +3,10 @@ package com.zb.controller;
 import com.zb.dto.CommissionDto;
 import com.zb.model.PageableData;
 import com.zb.service.CommissionService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
  * Created by bzheng on 2019/1/6.
  * 佣金
  */
+@Api(value = "佣金信息 Client Restful API ", description = "佣金信息 Client ", protocols = "application/json")
+
 @Validated
 @RestController
 @RequestMapping("/api/plat/commission")
@@ -18,13 +24,21 @@ public class CommissionController {
 
     @Autowired
     CommissionService commissionService;
-    
+
+    @ApiOperation(value = "获取佣金信息 ", notes = "获取佣金信息")
+    @ApiImplicitParam(name = "id", value = "佣金id", dataType = "int", paramType = "query", required = true)
     @RequestMapping(value = "/byId", method = RequestMethod.GET)
     public CommissionDto getById(@RequestParam("id") Integer id) {
 
         return commissionService.get(id);
     }
 
+    @ApiOperation(value = "分页查询佣金信息（郑兵） #2018-04-03#", notes = "分页查询车辆信息）")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pageNum", value = "当前页号", dataType = "int", paramType = "path", required = true),
+            @ApiImplicitParam(name = "pageSize", value = "每页显示记录数", dataType = "int", paramType = "path", required = true),
+            @ApiImplicitParam(name = "commissionDto", value = "参数对象", dataType = "CommissionDto", paramType = "body", required = false)
+    })
     @RequestMapping(value = "/queryPageableData/{pageNum}/{pageSize}", method = RequestMethod.POST)
     public PageableData<CommissionDto> queryPageableData(@PathVariable(value = "pageNum") Integer pageNum,
                                                        @PathVariable(value = "pageSize") Integer pageSize,
@@ -33,18 +47,9 @@ public class CommissionController {
         return commissionService.queryPageableData(pageNum, pageSize, CommissionDto);
     }
 
-    @RequestMapping(value = "/del", method = RequestMethod.DELETE)
-    public Boolean del(@RequestParam("id") Integer id) {
 
-        return commissionService.deleteById(id);
-    }
-
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Integer create(@RequestBody CommissionDto CommissionDto) {
-
-        return commissionService.insert(CommissionDto);
-    }
-
+    @ApiOperation(value = "修改佣金信息 ", notes = "修改佣金信息")
+    @ApiImplicitParam(name = "commissionDto", value = "参数对象", dataType = "CommissionDto", paramType = "body", required = true)
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
     public Boolean update(@RequestBody CommissionDto CommissionDto) {
 

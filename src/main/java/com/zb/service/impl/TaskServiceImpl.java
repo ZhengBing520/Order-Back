@@ -116,6 +116,8 @@ public class TaskServiceImpl extends BaseServiceImpl<TaskDto, Task, TaskDao> imp
             detailDto.setPut(putDecimal);
             // 余
             detailDto.setResidue(residue);
+            // 实收（0）
+            detailDto.setReceipt(new BigDecimal(0));
             detailService.insert(detailDto);
         }
         return 0 < i;
