@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by bzheng on 2019/1/6.
  * 卡号
  */
-@Api(value = "卡号管理 Client Restful API ", description = "卡号管理 Client (艾翠)", protocols = "application/json")
+@Api(value = "卡号管理 Client Restful API ", description = "卡号管理 Client ", protocols = "application/json")
 @Validated
 @RestController
 @RequestMapping("/api/plat/cardManagement")
@@ -32,7 +32,7 @@ public class CardManagementController {
         return cardManagementService.get(id);
     }
 
-    @ApiOperation(value = "分页查询卡号管理（郑兵） #2018-04-03#", notes = "分页查询车辆信息）")
+    @ApiOperation(value = "分页查询卡号管理", notes = "分页查询车辆信息）")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "当前页号", dataType = "int", paramType = "path", required = true),
             @ApiImplicitParam(name = "pageSize", value = "每页显示记录数", dataType = "int", paramType = "path", required = true),

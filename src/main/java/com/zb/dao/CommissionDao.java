@@ -12,17 +12,10 @@ import java.util.List;
 public interface CommissionDao extends BaseDao<Commission> {
 
     /**
-     * 通过商家id获取佣金配置信息
-     * @param businessId
-     * @return
-     */
-    List<Commission> selectListBybusinessId(@Param("businessId") Integer businessId);
-
-    /**
      * 生成默认规则
      * @param list
      */
-    int init(@Param("list") List<Commission> list);
+    int init(@Param("list") List<CommissionDto> list);
 
     /**
      * 根据商家ID删除佣金规则

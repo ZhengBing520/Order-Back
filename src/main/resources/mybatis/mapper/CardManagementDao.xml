@@ -3,10 +3,10 @@
 <mapper namespace="com.zb.dao.CardManagementDao">
 
     <select id="queryPageableData" resultType="com.zb.dto.CardManagementDto" parameterType="com.zb.dto.CardManagementDto">
-        select t.id, t.card_num as cardNum,t.card_num as cardNum, t.create_time as createTime, t.update_time as updateTime from t_card_management t
+        select t.id, t.card_num as cardNum,t.card_num as cardNum,t.card_name as cardName,t.create_time as createTime, t.update_time as updateTime from t_card_management t
         <where>
             <if test="null != cardNum">
-                and card_num like concat('%', #{cardNum} ,'%')
+                and card_name like concat('%', #{cardName} ,'%')
             </if>
         </where>
 

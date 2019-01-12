@@ -33,7 +33,7 @@ public class CommissionController {
         return commissionService.get(id);
     }
 
-    @ApiOperation(value = "分页查询佣金信息（郑兵） #2018-04-03#", notes = "分页查询车辆信息）")
+    @ApiOperation(value = "分页查询佣金信息", notes = "分页查询车辆信息）")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "当前页号", dataType = "int", paramType = "path", required = true),
             @ApiImplicitParam(name = "pageSize", value = "每页显示记录数", dataType = "int", paramType = "path", required = true),
@@ -42,17 +42,17 @@ public class CommissionController {
     @RequestMapping(value = "/queryPageableData/{pageNum}/{pageSize}", method = RequestMethod.POST)
     public PageableData<CommissionDto> queryPageableData(@PathVariable(value = "pageNum") Integer pageNum,
                                                        @PathVariable(value = "pageSize") Integer pageSize,
-                                                       @RequestBody(required = false) CommissionDto CommissionDto) throws Exception {
+                                                       @RequestBody(required = false) CommissionDto commissionDto) throws Exception {
 
-        return commissionService.queryPageableData(pageNum, pageSize, CommissionDto);
+        return commissionService.queryPageableData(pageNum, pageSize, commissionDto);
     }
 
 
     @ApiOperation(value = "修改佣金信息 ", notes = "修改佣金信息")
     @ApiImplicitParam(name = "commissionDto", value = "参数对象", dataType = "CommissionDto", paramType = "body", required = true)
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
-    public Boolean update(@RequestBody CommissionDto CommissionDto) {
+    public Boolean update(@RequestBody CommissionDto commissionDto) {
 
-        return commissionService.update(CommissionDto);
+        return commissionService.update(commissionDto);
     }
 }

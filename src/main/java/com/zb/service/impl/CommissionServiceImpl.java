@@ -28,7 +28,7 @@ public class CommissionServiceImpl extends BaseServiceImpl<CommissionDto, Commis
     public int init(Integer businessId) {
         Assert.notNull(businessId, "商家id不能为空");
         // 获取默认配置
-        List<Commission> list = dao.selectListBybusinessId(Constant.DEFAULT_COMMISSION_BUSINESS_ID);
+        List<CommissionDto> list = dao.selectCommissionListByBusinessId(Constant.DEFAULT_COMMISSION_BUSINESS_ID);
         // 生成默认配置
         if (!ObjectUtils.isEmpty(list)) {
             list.forEach(commission -> {

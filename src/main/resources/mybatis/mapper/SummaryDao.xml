@@ -38,11 +38,31 @@
         select  `id`, `date_summary` as dateSummary, `bill_sum` AS billSum, `receivable_sum` AS receivableSum,
         `put_sum` AS putSum, `residue`, `residue_last` AS residueLast,
         `receipt`, `balance`, `note`, `create_time` AS createTime, `update_time` AS updateTime
-        from t_summary WHERE t.id = #{id}
+        from t_summary WHERE id = #{id}
     </select>
 
     <delete id="delete" parameterType="int">
         delete from t_summary where id = #{id}
     </delete>
+
+    <select id="selectSummary" parameterType="com.zb.request.AccountCollectRequest" resultType="com.zb.dto.SummaryDto">
+        select  `id`, `date_summary` as dateSummary, `bill_sum` AS billSum, `receivable_sum` AS receivableSum,
+        `put_sum` AS putSum, `residue`, `residue_last` AS residueLast,
+        `receipt`, `balance`, `note`, `create_time` AS createTime, `update_time` AS updateTime
+        from t_summary
+        <where>
+            <if test="startTime != null">
+                <![CDATA[
+                    AND `date_summary` >= #{startTime}
+                ]]>
+            </if>
+            <if test="endTime != null">
+                <![CDATA[
+                    AND `date_summary` <= #{endTime}
+                ]]>
+            </if>
+
+        </where>
+    </select>
 
 </mapper>

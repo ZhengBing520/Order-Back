@@ -32,7 +32,7 @@ public class DetailController {
         return detailService.get(id);
     }
 
-    @ApiOperation(value = "分页查询明细信息（郑兵） #2018-04-03#", notes = "分页查询车辆信息）")
+    @ApiOperation(value = "分页查询明细信息", notes = "分页查询车辆信息）")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "当前页号", dataType = "int", paramType = "path", required = true),
             @ApiImplicitParam(name = "pageSize", value = "每页显示记录数", dataType = "int", paramType = "path", required = true),

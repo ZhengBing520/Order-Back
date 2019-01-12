@@ -44,7 +44,7 @@
         delete from t_detail where id = #{id}
     </delete>
 
-    <select id="getAccountCollect" parameterType="com.zb.request.AccountCollectRequest" resultType="com.zb.dto.AccountCollectDto">
+    <select id="getCardCollect" parameterType="com.zb.request.AccountCollectRequest" resultType="com.zb.dto.AccountCollectDto">
         select SUM(t.receipt) AS receiptSum, t.date_detail as dateDetail, m.card_name AS cardName from t_detail t
         INNER JOIN t_business b ON b.id = t.business_id
         INNER JOIN t_card_management m ON m.id = b.card_id
@@ -60,7 +60,26 @@
                 ]]>
             </if>
         </where>
-        GROUP BY t.date_detail,m.cardid
+        GROUP BY t.date_detail,m.card_name
+    </select>
+
+    <select id="getReferrerCollect" parameterType="com.zb.request.AccountCollectRequest" resultType="com.zb.dto.AccountCollectDto">
+        select SUM(t.receipt) AS receiptSum, t.date_detail as dateDetail, r.name_referrer AS referrerName from t_detail t
+        INNER JOIN t_business b ON b.id = t.business_id
+        INNER JOIN t_referrer r ON r.id = b.referrer_id
+        <where>
+            <if test="startTime != null">
+                <![CDATA[
+                    AND t.`date_detail` >= #{startTime}
+                ]]>
+            </if>
+            <if test="endTime != null">
+                <![CDATA[
+                    AND t.`date_detail` <= #{endTime}
+                ]]>
+            </if>
+        </where>
+        GROUP BY t.date_detail,r.name_referrer
     </select>
 
     <delete id="deleteByBusinessIdAndDate" >

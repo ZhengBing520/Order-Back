@@ -1,5 +1,6 @@
 package com.zb.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.zb.entity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -64,6 +65,14 @@ public class SummaryDto extends BaseDto {
      */
     @ApiModelProperty("备注")
     private String note;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @ApiModelProperty(value = "开始时间")
+    private Date startTime;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @ApiModelProperty(value = "结束时间")
+    private Date endTime;
 
     public Date getDateSummary() {
         return dateSummary;
@@ -135,5 +144,21 @@ public class SummaryDto extends BaseDto {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 }

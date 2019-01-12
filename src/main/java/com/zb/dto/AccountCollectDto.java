@@ -12,11 +12,11 @@ import java.util.Date;
  */
 public class AccountCollectDto implements Serializable {
 
-    /**
-     *
-     */
     @ApiModelProperty("卡号信息")
     private String cardName;
+
+    @ApiModelProperty("介绍人")
+    private String referrerName;
 
     @ApiModelProperty("金额")
     private BigDecimal receiptSum;
@@ -46,5 +46,13 @@ public class AccountCollectDto implements Serializable {
 
     public void setDateDetail(Date dateDetail) {
         this.dateDetail = dateDetail;
+    }
+
+    public String getReferrerName() {
+        return referrerName;
+    }
+
+    public void setReferrerName(String referrerName) {
+        this.referrerName = referrerName;
     }
 }

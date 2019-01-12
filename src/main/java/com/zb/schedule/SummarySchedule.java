@@ -1,5 +1,8 @@
 package com.zb.schedule;
 
+import com.zb.service.SummaryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,5 +11,16 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class SummarySchedule {
+
+    @Autowired
+    SummaryService summaryService;
+
+    /**
+     * 每天同步汇总信息
+     */
+    @Scheduled(cron = "0 0 1 * * ?")
+    public void createSummary() {
+        summaryService.createSummary();
+    }
 
 }

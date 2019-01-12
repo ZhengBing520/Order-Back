@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by bzheng on 2019/1/6.
  * 介绍人管理
  */
-@Api(value = "介绍人信息 Client Restful API ", description = "介绍人信息 Client (艾翠)", protocols = "application/json")
+@Api(value = "介绍人信息 Client Restful API ", description = "介绍人信息 Client ", protocols = "application/json")
 @Validated
 @RestController
 @RequestMapping("/api/plat/referrer")
@@ -32,7 +32,7 @@ public class ReferrerController {
         return referrerService.get(id);
     }
 
-    @ApiOperation(value = "分页查询介绍人信息（郑兵） #2018-04-03#", notes = "分页查询车辆信息）")
+    @ApiOperation(value = "分页查询介绍人信息", notes = "分页查询车辆信息）")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "当前页号", dataType = "int", paramType = "path", required = true),
             @ApiImplicitParam(name = "pageSize", value = "每页显示记录数", dataType = "int", paramType = "path", required = true),
