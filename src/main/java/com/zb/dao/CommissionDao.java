@@ -1,5 +1,6 @@
 package com.zb.dao;
 
+import com.zb.dto.CommissionDto;
 import com.zb.entity.Commission;
 import org.apache.ibatis.annotations.Param;
 
@@ -29,4 +30,11 @@ public interface CommissionDao extends BaseDao<Commission> {
      * @return
      */
     int deleteByBusinessid(@Param("businessId") Integer businessId);
+
+    /**
+     * 根据商家ID获取佣金规则
+     * @param businessId
+     * @return
+     */
+    List<CommissionDto> selectCommissionListByBusinessId(@Param("businessId") Integer businessId);
 }

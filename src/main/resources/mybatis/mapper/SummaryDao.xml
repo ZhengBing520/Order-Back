@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zb.dao.SummaryDao">
+
+    <select id="queryPageableData" resultType="com.zb.dto.SummaryDto" parameterType="com.zb.dto.SummaryDto">
+        select  `id`, `date_summary` as dateSummary, `bill_sum` AS billSum, `receivable_sum` AS receivableSum,
+        `put_sum` AS putSum, `residue`, `residue_last` AS residueLast,
+        `receipt`, `balance`, `note`, `create_time` AS createTime, `update_time` AS updateTime
+        from t_summary
+        <where>
+            <if test="startTime != null">
+                <![CDATA[
+                    AND `date_summary` >= #{startTime}
+                ]]>
+            </if>
+            <if test="endTime != null">
+                <![CDATA[
+                    AND `date_summary` <= #{endTime}
+                ]]>
+            </if>
+
+        </where>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zb.entity.Summary">
+        INSERT INTO `t_summary` (`date_summary`, `bill_sum`, `receivable_sum`, `put_sum`, `residue`, `residue_last`, `receipt`, `balance`, `note`)
+        VALUES
+        (#{dateSummary}, #{billSum}, #{receivableSum}, #{putSum}, #{residue},
+        #{residueLast}, #{receipt}, #{balance}, #{note})
+
+    </insert>
+
+    <update id="update" parameterType="com.zb.entity.Summary">
+        update t_summary set note = #{note}, update_time = #{updateTime} WHERE id = #{id}
+    </update>
+
+    <select id="selectById" parameterType="int" resultType="com.zb.entity.Summary">
+        select  `id`, `date_summary` as dateSummary, `bill_sum` AS billSum, `receivable_sum` AS receivableSum,
+        `put_sum` AS putSum, `residue`, `residue_last` AS residueLast,
+        `receipt`, `balance`, `note`, `create_time` AS createTime, `update_time` AS updateTime
+        from t_summary WHERE t.id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from t_summary where id = #{id}
+    </delete>
+
+</mapper>

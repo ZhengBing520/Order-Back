@@ -1,5 +1,7 @@
 package com.zb.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * Created by bzheng on 2019/1/6.
  * 商家表
@@ -7,19 +9,28 @@ package com.zb.dto;
 public class BusinessDto extends BaseDto{
 
     /**
-     * 商家名称
+     *
      */
+    @ApiModelProperty("商家名称")
     private String name;
 
     /**
-     * 卡号ID
+     *
      */
+    @ApiModelProperty("卡号ID")
     private Integer cardId;
 
     /**
-     * 卡号信息
+     *
      */
-    private String cardNum;
+    @ApiModelProperty("卡号信息")
+    private String cardName;
+
+    @ApiModelProperty("介绍人ID")
+    private Integer referrerId;
+
+    @ApiModelProperty("介绍人")
+    private String referrerName;
 
     public String getName() {
         return name;
@@ -37,11 +48,27 @@ public class BusinessDto extends BaseDto{
         this.cardId = cardId;
     }
 
-    public String getCardNum() {
-        return cardNum;
+    public String getCardName() {
+        return cardName;
     }
 
-    public void setCardNum(String cardNum) {
-        this.cardNum = cardNum;
+    public void setCardName(String cardName) {
+        this.cardName = cardName;
+    }
+
+    public Integer getReferrerId() {
+        return referrerId;
+    }
+
+    public void setReferrerId(Integer referrerId) {
+        this.referrerId = referrerId;
+    }
+
+    public String getReferrerName() {
+        return referrerName;
+    }
+
+    public void setReferrerName(String referrerName) {
+        this.referrerName = referrerName;
     }
 }

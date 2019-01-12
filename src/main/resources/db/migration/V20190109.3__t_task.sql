@@ -14,5 +14,6 @@ CREATE TABLE `t_task` (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
 
   PRIMARY KEY (`id`),
-  KEY `idx_date_task` (`date_task`) USING BTREE
+  KEY `idx_date_task` (`date_task`) USING BTREE,
+  KEY `idx_business_id` (`business_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商家任务表';

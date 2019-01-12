@@ -3,7 +3,8 @@
 <mapper namespace="com.zb.dao.BusinessDao">
 
     <select id="queryPageableData" resultType="com.zb.dto.BusinessDto" parameterType="com.zb.dto.BusinessDto">
-        select t.id, t.name, t.create_time as createTime, t.update_time as updateTime from t_business t
+        select t.id, t.name,t.card_id as cardId,m.card_name as cardName, t.create_time as createTime, t.update_time as updateTime from t_business t
+        left join t_card_management m on m.id = t.card_id
         <where>
             <if test="null != name">
                 and name like concat('%', #{name} ,'%')
@@ -35,7 +36,8 @@
     </update>
 
     <select id="selectById" parameterType="int" resultType="com.zb.entity.Business">
-        select t.id,t.name,t.card_id as cardId,t.create_time as createTime, t.update_time as updateTime from t_business t WHERE id = #{id}
+        select t.id, t.name,t.card_id as cardId,m.card_name as cardName, t.create_time as createTime, t.update_time as updateTime from t_business t
+        left join t_card_management m on m.id = t.card_id WHERE t.id = #{id}
     </select>
 
     <delete id="delete" parameterType="int">

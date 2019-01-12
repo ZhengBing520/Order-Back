@@ -16,6 +16,11 @@ public class Business extends BaseEntity{
      */
     private Integer cardId;
 
+    /**
+     * 介绍人ID
+     */
+    private Integer referrerId;
+
     public String getName() {
         return name;
     }

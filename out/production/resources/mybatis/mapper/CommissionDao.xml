@@ -6,7 +6,9 @@
         select t.id,t.business_id as businessId, t.price_min as priceMin, t.price_max as priceMax, t.commission, t.commission_cost as commissionCost,
         t.create_time as createTime, t.update_time as updateTime from t_commission t
         <where>
-
+            <if test="null != businessId">
+                and t.business_id = #{businessId}
+            </if>
         </where>
 
     </select>

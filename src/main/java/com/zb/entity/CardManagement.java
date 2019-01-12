@@ -8,13 +8,13 @@ public class CardManagement extends BaseEntity{
     /**
      * 卡号
      */
-    private String cardid;
+    private String cardNum;
 
-    public String getCardid() {
-        return cardid;
+    public String getCardNum() {
+        return cardNum;
     }
 
-    public void setCardid(String cardid) {
-        this.cardid = cardid;
+    public void setCardNum(String cardNum) {
+        this.cardNum = cardNum;
     }
 }

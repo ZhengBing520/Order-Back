@@ -13,10 +13,10 @@
     <select id="queryPageableData" resultType="com.zb.dto.TaskDto" parameterType="com.zb.dto.TaskDto">
         select t.id,t.business_id as businessId,b.name as businessName, t.date_task as dateTask, t.name_task as nameTask, t.keywords, t.spec, t.require, t.time_doing as timeDoing, t.buy_num as buyNum, t.price,
         t.create_time as createTime, t.update_time as updateTime from t_task t
-        left join t_task b on b.id = t.business_id
+        left join t_business b on b.id = t.business_id
         <where>
             <if test="null != businessId">
-                and business_id = #{businessId}
+                and t.business_id = #{businessId}
             </if>
         </where>
     </select>
@@ -29,7 +29,7 @@
     <select id="selectById" parameterType="int" resultType="com.zb.entity.Task">
         select t.id,t.business_id as businessId,b.name as businessName, t.date_task as dateTask, t.name_task as nameTask, t.keywords, t.spec, t.require, t.time_doing as timeDoing, t.buy_num as buyNum, t.price,
         t.create_time as createTime, t.update_time as updateTime from t_task t
-        left join t_task b on b.id = t.business_id
+        left join t_business b on b.id = t.business_id
         WHERE t.id = #{id}
     </select>
 

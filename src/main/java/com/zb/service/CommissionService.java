@@ -1,6 +1,9 @@
 package com.zb.service;
 
 import com.zb.dto.CommissionDto;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * Created by bzheng on 2019/1/6.
@@ -19,4 +22,11 @@ public interface CommissionService extends BaseService<CommissionDto>{
      * @return
      */
     int deleteByBusinessid(Integer businessId);
+
+    /**
+     * 根据商家ID获取佣金规则
+     * @param businessId
+     * @return
+     */
+    List<CommissionDto> selectCommissionListByBusinessId(Integer businessId);
 }

@@ -11,7 +11,8 @@ CREATE TABLE `t_commission` (
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idx_business_id` (`business_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='佣金表';
 
 INSERT INTO  `t_commission` (`business_id`, `price_min`, `price_max`, `commission`, `commission_cost`, `create_time`, `update_time`) VALUES ('0', '1', '99', '15.00', '15.00', now(), now());

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zb.dao.DetailDao">
+
+    <select id="queryPageableData" resultType="com.zb.dto.DetailDto" parameterType="com.zb.dto.DetailDto">
+        select t.id, t.business_id as businessId, b.name as businessName, t.date_detail as dateDetail,
+        t.bill_total as billTotal, t.receivable, t.put, t.receipt, t.residue,
+        t.create_time as createTime, t.update_time as updateTime from t_detail t
+        left join t_business b on b.id = t.business_id
+        <where>
+            <if test="startTime != null">
+                <![CDATA[
+                    AND t.`date_detail` >= #{startTime}
+                ]]>
+            </if>
+            <if test="endTime != null">
+                <![CDATA[
+                    AND t.`date_detail` <= #{endTime}
+                ]]>
+            </if>
+            <if test="null != businessId">
+                and t.business_id = #{businessId}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zb.entity.Detail">
+        INSERT INTO `t_detail` (`business_id`, `date_detail`, `bill_total`, `receivable`, `put`, `receipt`, `residue`) VALUES
+        (#{businessId}, #{dateDetail}, #{billTotal}, #{receivable}, #{put}, #{receipt}, #{residue})
+    </insert>
+
+    <update id="update" parameterType="com.zb.entity.Detail">
+        update t_detail set receipt = #{receipt}, update_time = #{updateTime} WHERE id = #{id}
+    </update>
+
+    <select id="selectById" parameterType="int" resultType="com.zb.entity.Detail">
+        select t.id, t.business_id as businessId, b.name as businessName, t.date_detail as dateDetail,
+        t.bill_total as billTotal, t.receivable, t.put, t.receipt, t.residue,
+        t.create_time as createTime, t.update_time as updateTime from t_detail t
+        left join t_business b on b.id = t.business_id WHERE t.id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from t_detail where id = #{id}
+    </delete>
+
+    <select id="getAccountCollect" parameterType="com.zb.request.AccountCollectRequest" resultType="com.zb.dto.AccountCollectDto">
+        select SUM(t.receipt) AS receiptSum, t.date_detail as dateDetail, m.card_name AS cardName from t_detail t
+        INNER JOIN t_business b ON b.id = t.business_id
+        INNER JOIN t_card_management m ON m.id = b.card_id
+        <where>
+            <if test="startTime != null">
+                <![CDATA[
+                    AND t.`date_detail` >= #{startTime}
+                ]]>
+            </if>
+            <if test="endTime != null">
+                <![CDATA[
+                    AND t.`date_detail` <= #{endTime}
+                ]]>
+            </if>
+        </where>
+        GROUP BY t.date_detail,m.cardid
+    </select>
+
+    <delete id="deleteByBusinessIdAndDate" >
+        delete from t_detail where t.business_id = #{businessId} and t.date_detail = #{dateDetail}
+    </delete>
+</mapper>

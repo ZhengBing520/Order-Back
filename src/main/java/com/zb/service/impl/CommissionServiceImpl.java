@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by bzheng on 2019/1/6.
@@ -42,5 +44,14 @@ public class CommissionServiceImpl extends BaseServiceImpl<CommissionDto, Commis
     public int deleteByBusinessid(Integer businessId) {
         Assert.notNull(businessId, "商家id不能为空");
         return dao.deleteByBusinessid(businessId);
+    }
+
+    @Override
+    public List<CommissionDto> selectCommissionListByBusinessId(Integer businessId) {
+        List<CommissionDto> list = dao.selectCommissionListByBusinessId(businessId);
+        if (Objects.isNull(list)) {
+            list = new ArrayList<>();
+        }
+        return list;
     }
 }

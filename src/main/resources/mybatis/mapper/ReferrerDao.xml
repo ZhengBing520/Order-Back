@@ -3,7 +3,7 @@
 <mapper namespace="com.zb.dao.ReferrerDao">
 
     <select id="queryPageableData" resultType="com.zb.dto.ReferrerDto" parameterType="com.zb.dto.ReferrerDto">
-        select t.id, t.name_referrer AS nameReferrer, t.create_time as createTime, t.update_time as updateTime from t_referrer t
+        select t.id, t.name_referrer AS nameReferrer,t.push_money as pushMoney, t.create_time as createTime, t.update_time as updateTime from t_referrer t
         <where>
             <if test="null != nameReferrer">
                 and name_referrer like concat('%', #{nameReferrer} ,'%')
@@ -13,15 +13,15 @@
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zb.entity.Referrer">
-        insert into t_referrer (`name_referrer`) values (#{nameReferrer})
+        insert into t_referrer (`name_referrer`,push_money) values (#{nameReferrer}, #{pushMoney})
     </insert>
 
     <update id="update" parameterType="com.zb.entity.Referrer">
-        update t_referrer set `name_referrer` = #{nameReferrer}, update_time = #{updateTime} WHERE id = #{id}
+        update t_referrer set `name_referrer` = #{nameReferrer},push_money = #{pushMoney}, update_time = #{updateTime} WHERE id = #{id}
     </update>
 
     <select id="selectById" parameterType="int" resultType="com.zb.entity.Referrer">
-        select t.id,t.name_referrer AS nameReferrer,t.create_time as createTime, t.update_time as updateTime from t_referrer t WHERE id = #{id}
+        select t.id,t.name_referrer AS nameReferrer,t.push_money as pushMoney,t.create_time as createTime, t.update_time as updateTime from t_referrer t WHERE id = #{id}
     </select>
 
     <delete id="delete" parameterType="int">

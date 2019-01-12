@@ -10,13 +10,31 @@
         </foreach>
     </insert>
 
-    <select id="queryPageableData" resultType="com.zb.dto.CommissionDto" parameterType="com.zb.dto.CommissionDto">
-        select t.id,t.business_id as businessId, t.date_task as dateTask, t.name_task as nameTask, t.keywords, t.spec, t.require, t.time_doing as timeDoing, t.buy_num as buyNum, t.price,
+    <select id="queryPageableData" resultType="com.zb.dto.TaskDto" parameterType="com.zb.dto.TaskDto">
+        select t.id,t.business_id as businessId,b.name as businessName, t.date_task as dateTask, t.name_task as nameTask, t.keywords, t.spec, t.require, t.time_doing as timeDoing, t.buy_num as buyNum, t.price,
         t.create_time as createTime, t.update_time as updateTime from t_task t
+        left join t_business b on b.id = t.business_id
         <where>
-
+            <if test="null != businessId">
+                and t.business_id = #{businessId}
+            </if>
         </where>
-
     </select>
 
+
+    <update id="update" parameterType="com.zb.entity.Task">
+        update t_task set date_task = #{dateTask}, `name_task` = #{nameTask},keywords = #{keywords},spec = #{spec},require = #{require}, time_doing = #{timeDoing}, buy_num = #{buyNum}, price = #{price}, update_time = #{updateTime} WHERE id = #{id}
+    </update>
+
+    <select id="selectById" parameterType="int" resultType="com.zb.entity.Task">
+        select t.id,t.business_id as businessId,b.name as businessName, t.date_task as dateTask, t.name_task as nameTask, t.keywords, t.spec, t.require, t.time_doing as timeDoing, t.buy_num as buyNum, t.price,
+        t.create_time as createTime, t.update_time as updateTime from t_task t
+        left join t_business b on b.id = t.business_id
+        WHERE t.id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from t_task where id = #{id}
+    </delete>
+    
 </mapper>
