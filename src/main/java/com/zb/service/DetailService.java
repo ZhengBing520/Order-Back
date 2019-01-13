@@ -1,7 +1,9 @@
 package com.zb.service;
 
-import com.zb.dto.AccountCollectDto;
+import com.zb.dto.CardAccountCollectDto;
 import com.zb.dto.DetailDto;
+import com.zb.dto.DetailStatisticsDto;
+import com.zb.dto.ReferrerAccountCollectDto;
 import com.zb.request.AccountCollectRequest;
 import org.springframework.stereotype.Service;
 
@@ -26,12 +28,19 @@ public interface DetailService extends BaseService<DetailDto> {
      * @param accountCollectRequest
      * @return
      */
-    List<AccountCollectDto> getCardCollect(AccountCollectRequest accountCollectRequest);
+    List<CardAccountCollectDto> getCardCollect(AccountCollectRequest accountCollectRequest);
 
     /**
      * 获取每日介绍人收款汇总
      * @param accountCollectRequest
      * @return
      */
-    List<AccountCollectDto> getReferrerCollect(AccountCollectRequest accountCollectRequest);
+    List<ReferrerAccountCollectDto> getReferrerCollect(AccountCollectRequest accountCollectRequest);
+
+    /**
+     * 根据时间统计总量
+     * @param dateDetail
+     * @return
+     */
+    DetailStatisticsDto detailStatisticsByDate(Date dateDetail);
 }

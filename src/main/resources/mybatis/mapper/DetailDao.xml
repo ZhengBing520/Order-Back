@@ -44,8 +44,8 @@
         delete from t_detail where id = #{id}
     </delete>
 
-    <select id="getCardCollect" parameterType="com.zb.request.AccountCollectRequest" resultType="com.zb.dto.AccountCollectDto">
-        select SUM(t.receipt) AS receiptSum, t.date_detail as dateDetail, m.card_name AS cardName from t_detail t
+    <select id="getCardCollect" parameterType="com.zb.request.AccountCollectRequest" resultType="com.zb.dto.CardAccountCollectDto">
+        select SUM(t.receipt) AS cardReceiptSum, t.date_detail as dateDetail, m.card_name AS cardName from t_detail t
         INNER JOIN t_business b ON b.id = t.business_id
         INNER JOIN t_card_management m ON m.id = b.card_id
         <where>
@@ -63,8 +63,8 @@
         GROUP BY t.date_detail,m.card_name
     </select>
 
-    <select id="getReferrerCollect" parameterType="com.zb.request.AccountCollectRequest" resultType="com.zb.dto.AccountCollectDto">
-        select SUM(t.receipt) AS receiptSum, t.date_detail as dateDetail, r.name_referrer AS referrerName from t_detail t
+    <select id="getReferrerCollect" parameterType="com.zb.request.AccountCollectRequest" resultType="com.zb.dto.ReferrerAccountCollectDto">
+        select SUM(t.bill_total * r.push_money) AS referrerReceiptSum, t.date_detail as dateDetail, r.name_referrer AS referrerName from t_detail t
         INNER JOIN t_business b ON b.id = t.business_id
         INNER JOIN t_referrer r ON r.id = b.referrer_id
         <where>
@@ -85,4 +85,12 @@
     <delete id="deleteByBusinessIdAndDate" >
         delete from t_detail where business_id = #{businessId} and date_detail = #{dateDetail}
     </delete>
+
+    <select id="detailStatisticsByDate" resultType="com.zb.dto.DetailStatisticsDto">
+        select SUM(bill_total) as billTotalSum,SUM(receivable) as receivableSum,SUM(put) as putSum,
+        SUM(receipt) as receiptSum,SUM(residue) as residueSum,date_detail as dateDetail
+        from t_detail WHERE
+        date_detail = #{dateDetail}
+        GROUP BY date_detail;
+    </select>
 </mapper>

@@ -3,7 +3,8 @@
 <mapper namespace="com.zb.dao.CommissionDao">
 
     <select id="queryPageableData" resultType="com.zb.dto.CommissionDto" parameterType="com.zb.dto.CommissionDto">
-        select t.id,t.business_id as businessId, t.price_min as priceMin, t.price_max as priceMax, t.commission, t.commission_cost as commissionCost,
+        select t.id,t.business_id as businessId, t.price_min as priceMin, t.price_max as priceMax, t.commission,
+        t.commission_cost as commissionCost,
         t.create_time as createTime, t.update_time as updateTime from t_commission t
         <where>
             <if test="null != businessId">
@@ -11,27 +12,42 @@
             </if>
         </where>
 
-    </select>
-
-    <select id="selectListBybusinessId" resultType="com.zb.entity.Commission">
-        select t.id,t.business_id as businessId, t.price_min as priceMin, t.price_max as priceMax, t.commission, t.commission_cost as commissionCost,
-        t.create_time as createTime, t.update_time as updateTime from t_commission t
-        <where>
-            <if test="null != businessId">
-                and t.business_id = #{businessId}
-            </if>
-        </where>
     </select>
 
     <insert id="init">
         INSERT INTO `t_commission` (`business_id`, `price_min`, `price_max`,`commission`, `commission_cost`)
         values
         <foreach collection="list" item="commission" separator=",">
-            (#{commission.businessId}, #{commission.priceMin}, #{commission.priceMax}, #{commission.commission}, #{commission.commissionCost})
+            (#{commission.businessId}, #{commission.priceMin}, #{commission.priceMax}, #{commission.commission},
+            #{commission.commissionCost})
         </foreach>
     </insert>
 
     <delete id="deleteByBusinessid">
         delete from t_commission where business_id = #{businessId}
     </delete>
+
+    <select id="selectCommissionListByBusinessId" resultType="com.zb.dto.CommissionDto">
+        select t.business_id as businessId,t.price_min as priceMin, t.price_max as priceMax, t.commission, t.commission_cost as commissionCost
+        from t_commission t
+        where t.business_id = #{businessId}
+    </select>
+
+    <update id="update" parameterType="com.zb.entity.Business">
+        update t_commission set commission = #{commission},
+        commission_cost = #{commissionCost}, update_time = #{updateTime} WHERE id = #{id}
+    </update>
+
+    <select id="selectById" parameterType="int" resultType="com.zb.entity.Business">
+        select t.id, t.name,t.card_id as cardId,m.card_name as cardName, t.referrer_id as referrerId,
+        r.name_referrer as referrerName,t.create_time as createTime, t.update_time as updateTime
+        from t_commission t
+        left join t_card_management m on m.id = t.card_id
+        left join t_referrer r on r.id = t.referrer_id WHERE t.id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from t_commission where id = #{id}
+    </delete>
+
 </mapper>

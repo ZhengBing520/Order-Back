@@ -45,6 +45,10 @@
         delete from t_summary where id = #{id}
     </delete>
 
+    <delete id="deleteByDate" >
+        delete from t_summary where date_summary = #{dateSummary}
+    </delete>
+
     <select id="selectSummary" parameterType="com.zb.request.AccountCollectRequest" resultType="com.zb.dto.SummaryDto">
         select  `id`, `date_summary` as dateSummary, `bill_sum` AS billSum, `receivable_sum` AS receivableSum,
         `put_sum` AS putSum, `residue`, `residue_last` AS residueLast,
@@ -64,5 +68,9 @@
 
         </where>
     </select>
+
+    <update id="updateReceiptByDate">
+        update t_summary SET receipt = receipt + #{subtract}, balance = balance - #{subtract}, update_time = NOW() WHERE date_summary = #{dateSummary}
+    </update>
 
 </mapper>

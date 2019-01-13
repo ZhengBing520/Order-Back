@@ -34,7 +34,7 @@
     </insert>
 
     <update id="update" parameterType="com.zb.entity.Business">
-        update t_business set `name` = #{name},card_id =#{cardId},referrer_id = #{referrerid}, update_time = #{updateTime} WHERE id = #{id}
+        update t_business set `name` = #{name},card_id =#{cardId},referrer_id = #{referrerId}, update_time = #{updateTime} WHERE id = #{id}
     </update>
 
     <select id="selectById" parameterType="int" resultType="com.zb.entity.Business">

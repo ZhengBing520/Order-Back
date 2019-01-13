@@ -75,6 +75,14 @@ public class TaskDto extends BaseDto {
     @ApiModelProperty("单价")
     private BigDecimal price;
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @ApiModelProperty(value = "开始时间")
+    private Date startTime;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @ApiModelProperty(value = "结束时间")
+    private Date endTime;
+
     public Integer getBusinessId() {
         return businessId;
     }
@@ -153,5 +161,21 @@ public class TaskDto extends BaseDto {
 
     public void setRequire(String require) {
         this.require = require;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 }

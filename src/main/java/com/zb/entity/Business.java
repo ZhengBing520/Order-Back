@@ -36,4 +36,12 @@ public class Business extends BaseEntity{
     public void setCardId(Integer cardId) {
         this.cardId = cardId;
     }
+
+    public Integer getReferrerId() {
+        return referrerId;
+    }
+
+    public void setReferrerId(Integer referrerId) {
+        this.referrerId = referrerId;
+    }
 }

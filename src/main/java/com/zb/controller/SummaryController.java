@@ -1,7 +1,6 @@
 package com.zb.controller;
 
-import com.zb.dto.AccountCollectDto;
-import com.zb.dto.SummaryDto;
+import com.zb.dto.*;
 import com.zb.model.PageableData;
 import com.zb.request.AccountCollectRequest;
 import com.zb.service.DetailService;
@@ -44,14 +43,14 @@ public class SummaryController {
     @ApiOperation(value = "获取每日卡号收款汇总", notes = "获取每日卡号收款汇总")
     @ApiImplicitParam(name = "accountCollectRequest", value = "查询条件", dataType = "AccountCollectRequest", paramType = "body", required = true)
     @RequestMapping(value = "/getCardCollect", method = RequestMethod.POST)
-    public List<AccountCollectDto> getCardCollect(@RequestBody AccountCollectRequest accountCollectRequest) {
+    public List<CardAccountCollectDto> getCardCollect(@RequestBody AccountCollectRequest accountCollectRequest) {
         return detailService.getCardCollect(accountCollectRequest);
     }
 
     @ApiOperation(value = "获取每日介绍人收款汇总", notes = "获取每日介绍人收款汇总")
     @ApiImplicitParam(name = "accountCollectRequest", value = "查询条件", dataType = "AccountCollectRequest", paramType = "body", required = true)
     @RequestMapping(value = "/getReferrerCollect", method = RequestMethod.POST)
-    public List<AccountCollectDto> getReferrerCollect(@RequestBody AccountCollectRequest accountCollectRequest) {
+    public List<ReferrerAccountCollectDto> getReferrerCollect(@RequestBody AccountCollectRequest accountCollectRequest) {
         return detailService.getReferrerCollect(accountCollectRequest);
     }
 
@@ -77,6 +76,12 @@ public class SummaryController {
         return summaryService.update(summaryDto);
     }
 
+    @ApiOperation(value = "生成第二天汇总信息", notes = "生成第二天汇总信息")
+    @RequestMapping(value = "/initSummary", method = RequestMethod.GET)
+    public Boolean initSummary() {
+
+        return summaryService.initSummary();
+    }
     @ApiOperation(value = "获取汇总信息 ", notes = "获取汇总信息")
     @ApiImplicitParam(name = "id", value = "汇总id", dataType = "int", paramType = "query", required = true)
     @RequestMapping(value = "/byId", method = RequestMethod.GET)

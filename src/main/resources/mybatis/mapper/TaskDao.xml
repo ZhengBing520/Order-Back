@@ -18,6 +18,16 @@
             <if test="null != businessId">
                 and t.business_id = #{businessId}
             </if>
+            <if test="startTime != null">
+                <![CDATA[
+                    AND t.`date_task` >= #{startTime}
+                ]]>
+            </if>
+            <if test="endTime != null">
+                <![CDATA[
+                    AND t.`date_task` <= #{endTime}
+                ]]>
+            </if>
         </where>
     </select>
 

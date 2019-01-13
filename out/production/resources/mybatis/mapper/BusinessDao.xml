@@ -3,8 +3,10 @@
 <mapper namespace="com.zb.dao.BusinessDao">
 
     <select id="queryPageableData" resultType="com.zb.dto.BusinessDto" parameterType="com.zb.dto.BusinessDto">
-        select t.id, t.name,t.card_id as cardId,m.cardid as cardNum, t.create_time as createTime, t.update_time as updateTime from t_business t
+        select t.id, t.name,t.card_id as cardId,m.card_name as cardName, t.referrer_id as referrerId,
+        r.name_referrer as referrerName,t.create_time as createTime, t.update_time as updateTime from t_business t
         left join t_card_management m on m.id = t.card_id
+        left join t_referrer r on r.id = t.referrer_id
         <where>
             <if test="null != name">
                 and name like concat('%', #{name} ,'%')
@@ -28,19 +30,23 @@
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zb.entity.Business">
-        insert into t_business (`name`,`card_id`) values (#{name},#{cardId})
+        insert into t_business (`name`,`card_id`,referrer_id) values (#{name},#{cardId},#{referrerId})
     </insert>
 
     <update id="update" parameterType="com.zb.entity.Business">
-        update t_business set `name` = #{name},card_id =#{cardId}, update_time = #{updateTime} WHERE id = #{id}
+        update t_business set `name` = #{name},card_id =#{cardId},referrer_id = #{referrerId}, update_time = #{updateTime} WHERE id = #{id}
     </update>
 
     <select id="selectById" parameterType="int" resultType="com.zb.entity.Business">
-        select t.id,t.name,t.card_id as cardId,t.create_time as createTime, t.update_time as updateTime from t_business t WHERE id = #{id}
+        select t.id, t.name,t.card_id as cardId,m.card_name as cardName, t.referrer_id as referrerId,
+        r.name_referrer as referrerName,t.create_time as createTime, t.update_time as updateTime from t_business t
+        left join t_card_management m on m.id = t.card_id
+        left join t_referrer r on r.id = t.referrer_id WHERE t.id = #{id}
     </select>
 
     <delete id="delete" parameterType="int">
         delete from t_business where id = #{id}
     </delete>
+
 
 </mapper>

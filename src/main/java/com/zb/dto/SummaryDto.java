@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by bzheng on 2019/1/10.
@@ -15,6 +16,7 @@ public class SummaryDto extends BaseDto {
     /**
      *
      */
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @ApiModelProperty("日期")
     private Date dateSummary;
 
@@ -73,6 +75,12 @@ public class SummaryDto extends BaseDto {
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @ApiModelProperty(value = "结束时间")
     private Date endTime;
+
+    @ApiModelProperty(value = "收款账户")
+    List<CardAccountCollectDto> cardAccountCollectDtos;
+
+    @ApiModelProperty(value = "介绍人提成")
+    List<ReferrerAccountCollectDto> referrerAccountCollectDtos;
 
     public Date getDateSummary() {
         return dateSummary;
@@ -160,5 +168,21 @@ public class SummaryDto extends BaseDto {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    public List<CardAccountCollectDto> getCardAccountCollectDtos() {
+        return cardAccountCollectDtos;
+    }
+
+    public void setCardAccountCollectDtos(List<CardAccountCollectDto> cardAccountCollectDtos) {
+        this.cardAccountCollectDtos = cardAccountCollectDtos;
+    }
+
+    public List<ReferrerAccountCollectDto> getReferrerAccountCollectDtos() {
+        return referrerAccountCollectDtos;
+    }
+
+    public void setReferrerAccountCollectDtos(List<ReferrerAccountCollectDto> referrerAccountCollectDtos) {
+        this.referrerAccountCollectDtos = referrerAccountCollectDtos;
     }
 }
