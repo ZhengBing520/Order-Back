@@ -7,11 +7,13 @@ import com.zb.dto.DetailStatisticsDto;
 import com.zb.dto.ReferrerAccountCollectDto;
 import com.zb.dto.SummaryDto;
 import com.zb.entity.Summary;
+import com.zb.model.PageableData;
 import com.zb.request.AccountCollectRequest;
 import com.zb.service.DetailService;
 import com.zb.service.SummaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -33,6 +35,20 @@ public class SummaryServiceImpl extends BaseServiceImpl<SummaryDto, Summary, Sum
     public List<SummaryDto> selectSummary(AccountCollectRequest accountCollectRequest) {
         List<SummaryDto> summaryDtos = dao.selectSummary(accountCollectRequest);
         // 获取介绍人和卡号汇总数据
+        summaryDtos = putAccountCollectDto(summaryDtos, accountCollectRequest);
+        return summaryDtos;
+    }
+
+    /**
+     * 设置卡号统计和介绍人提成数据
+     * @param summaryDtos
+     * @param accountCollectRequest
+     * @return
+     */
+    private List<SummaryDto> putAccountCollectDto(List<SummaryDto> summaryDtos, AccountCollectRequest accountCollectRequest) {
+        if (ObjectUtils.isEmpty(summaryDtos)) {
+            return summaryDtos;
+        }
         List<ReferrerAccountCollectDto> referrerCollect = detailService.getReferrerCollect(accountCollectRequest);
         List<CardAccountCollectDto> cardCollect = detailService.getCardCollect(accountCollectRequest);
         // 转换成map
@@ -58,7 +74,19 @@ public class SummaryServiceImpl extends BaseServiceImpl<SummaryDto, Summary, Sum
                 summaryDto.setCardAccountCollectDtos(cardMap.get(summaryDto.getDateSummary()));
             }
         }
+
         return summaryDtos;
+    }
+
+    @Override
+    public PageableData<SummaryDto> queryPageableData(Integer pageNum, Integer pageSize, SummaryDto summaryDto) {
+        PageableData<SummaryDto> summaryDtoPageableData = super.queryPageableData(pageNum, pageSize, summaryDto);
+        List<SummaryDto> dataList = summaryDtoPageableData.getDataList();
+        AccountCollectRequest accountCollectRequest = new AccountCollectRequest();
+        accountCollectRequest.setStartTime(summaryDto.getStartTime());
+        accountCollectRequest.setEndTime(summaryDto.getEndTime());
+        dataList = putAccountCollectDto(dataList, accountCollectRequest);
+        return summaryDtoPageableData;
     }
 
     @Override
