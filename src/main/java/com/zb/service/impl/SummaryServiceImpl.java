@@ -83,8 +83,11 @@ public class SummaryServiceImpl extends BaseServiceImpl<SummaryDto, Summary, Sum
         PageableData<SummaryDto> summaryDtoPageableData = super.queryPageableData(pageNum, pageSize, summaryDto);
         List<SummaryDto> dataList = summaryDtoPageableData.getDataList();
         AccountCollectRequest accountCollectRequest = new AccountCollectRequest();
-        accountCollectRequest.setStartTime(summaryDto.getStartTime());
-        accountCollectRequest.setEndTime(summaryDto.getEndTime());
+        if (!Objects.isNull(summaryDto)) {
+            accountCollectRequest.setStartTime(summaryDto.getStartTime());
+            accountCollectRequest.setEndTime(summaryDto.getEndTime());
+        }
+
         dataList = putAccountCollectDto(dataList, accountCollectRequest);
         return summaryDtoPageableData;
     }
