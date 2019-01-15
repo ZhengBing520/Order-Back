@@ -21,7 +21,7 @@ public interface CommissionService extends BaseService<CommissionDto>{
      * @param businessId
      * @return
      */
-    int deleteByBusinessid(Integer businessId);
+    int deleteByBusinessId(Integer businessId);
 
     /**
      * 根据商家ID获取佣金规则

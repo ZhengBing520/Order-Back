@@ -41,7 +41,7 @@ public class CommissionServiceImpl extends BaseServiceImpl<CommissionDto, Commis
     }
 
     @Override
-    public int deleteByBusinessid(Integer businessId) {
+    public int deleteByBusinessId(Integer businessId) {
         Assert.notNull(businessId, "商家id不能为空");
         return dao.deleteByBusinessid(businessId);
     }

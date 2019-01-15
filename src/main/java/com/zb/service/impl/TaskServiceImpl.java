@@ -41,6 +41,7 @@ public class TaskServiceImpl extends BaseServiceImpl<TaskDto, Task, TaskDao> imp
 
     /**
      * 批量插入任务(导入的任务是第二天的，重复导入就覆盖)
+     *
      * @param taskRequest
      * @return
      */
@@ -67,40 +68,40 @@ public class TaskServiceImpl extends BaseServiceImpl<TaskDto, Task, TaskDao> imp
         List<CommissionDto> commissionDtoList = commissionService.selectCommissionListByBusinessId(id);
         Date nextDay = DateUtil.getBeginDayOfTomorrow();
         // 删除第二天任务
-        dao.deleteTasks(id, nextDay);
+        deleteTasks(id, nextDay);
         // 总单数
         Integer billTotal = taskList.size();
-        // 应收
-        Double receivable = 0D;
-        // 放
-        Double put = 0D;
+        // 总价
+        Double totalPrice = 0D;
+        // 应收 总价 + 佣金
+        BigDecimal receivableDecimal = new BigDecimal(0);
+        // 放  总价 + 成本佣金
+        BigDecimal putDecimal = new BigDecimal(0);
 
         for (Task task : taskList) {
             task.setBusinessId(id);
             // 第二天
             task.setDateTask(nextDay);
-            // 每单应收
-            CommissionDto commissionDto = getReceivableToTask(commissionDtoList, task.getPrice().doubleValue());
-            if (!Objects.isNull(commissionDto)) {
-                // （佣金 + 单价） * 件数
-                BigDecimal commission = commissionDto.getCommission();
-                BigDecimal commissionCost = commissionDto.getCommissionCost();
-                BigDecimal price = task.getPrice();
-                Integer buyNum = task.getBuyNum();
-                // 每个任务的应收叠加
-                receivable += buyNum * commission.add(price).doubleValue();
-                // 每个任务的放叠加
-                put += buyNum * commissionCost.add(price).doubleValue();
-            }
+
+            // 佣金（通过总价找到佣金） 总价 = 单价 * 件数
+            BigDecimal price = task.getPrice();
+            Integer buyNum = task.getBuyNum();
+            // 总价
+            totalPrice += buyNum * price.doubleValue();
+
+        }
+
+        // 佣金
+        CommissionDto commissionDto = getReceivableToTask(commissionDtoList, totalPrice);
+        BigDecimal totalPriceDecimal = new BigDecimal(totalPrice);
+        if (!Objects.isNull(commissionDto)) {
+            receivableDecimal = totalPriceDecimal.add(commissionDto.getCommission());
+            putDecimal = totalPriceDecimal.add(commissionDto.getCommissionCost());
         }
         // 余 (应收-放)
-        BigDecimal receivableDecimal = new BigDecimal(receivable);
-        BigDecimal putDecimal = new BigDecimal(put);
         BigDecimal residue = receivableDecimal.subtract(putDecimal);
         int i = dao.insertList(taskList);
         if (0 < i) {
-            // 先删除明细--根据时间和商家
-            detailService.deleteByBusinessIdAndDate(id, nextDay);
 
             // 生成每日的明细
             DetailDto detailDto = new DetailDto();
@@ -116,17 +117,36 @@ public class TaskServiceImpl extends BaseServiceImpl<TaskDto, Task, TaskDao> imp
             detailDto.setPut(putDecimal);
             // 余
             detailDto.setResidue(residue);
-            // 实收（0）
-            detailDto.setReceipt(new BigDecimal(0));
+            // 实收默认等于应收
+            detailDto.setReceipt(receivableDecimal);
             detailService.insert(detailDto);
         }
         return 0 < i;
     }
 
     /**
+     * 删除任务级联删除明细
+     *
+     * @param id
+     * @param nextDay
+     * @return
+     */
+    @Override
+    public Boolean deleteTasks(Integer id, Date nextDay) {
+        int i = dao.deleteTasks(id, nextDay);
+        if (i > 0) {
+            // 删除明细
+            detailService.deleteByBusinessIdAndDate(id, nextDay);
+        }
+
+        return i > 0;
+    }
+
+    /**
      * 通过单价找佣金规则
+     *
      * @param commissionDtoList 佣金规则
-     * @param price 单价
+     * @param price             单价
      * @return
      */
     private CommissionDto getReceivableToTask(List<CommissionDto> commissionDtoList, double price) {

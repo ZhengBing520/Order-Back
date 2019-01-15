@@ -2,12 +2,15 @@ package com.zb.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.zb.common.utils.DateUtil;
 import com.zb.dao.BusinessDao;
 import com.zb.dto.BusinessDto;
 import com.zb.entity.Business;
 import com.zb.model.PageableData;
 import com.zb.service.BusinessService;
 import com.zb.service.CommissionService;
+import com.zb.service.DetailService;
+import com.zb.service.TaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -30,6 +34,12 @@ public class BusinessServiceImpl extends BaseServiceImpl<BusinessDto, Business, 
 
     @Autowired
     CommissionService commissionService;
+
+    @Autowired
+    TaskService taskService;
+
+    @Autowired
+    DetailService detailService;
 
     @Override
     @Transactional
@@ -83,9 +93,14 @@ public class BusinessServiceImpl extends BaseServiceImpl<BusinessDto, Business, 
     public Boolean deleteById(Integer id) {
         Assert.notNull(id, "商家ID不能为空");
         Boolean flag = super.deleteById(id);
+        Date nextDay = DateUtil.getBeginDayOfTomorrow();
         if (flag) {
             // 删除佣金规则
-            commissionService.deleteByBusinessid(id);
+            commissionService.deleteByBusinessId(id);
+
+            // 删除任务
+            taskService.deleteTasks(id, nextDay);
+
         }
         return flag;
     }

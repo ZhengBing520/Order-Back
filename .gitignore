@@ -5,6 +5,5 @@ build/
 *.log
 application-*.yml
 .DS_Store
-out/
-### Java template
 *.class
+out/
