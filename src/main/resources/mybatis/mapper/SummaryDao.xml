@@ -18,8 +18,8 @@
                     AND `date_summary` <= #{endTime}
                 ]]>
             </if>
-
         </where>
+        order by id desc
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zb.entity.Summary">

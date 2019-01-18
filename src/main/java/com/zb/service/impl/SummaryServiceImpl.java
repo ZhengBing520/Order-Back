@@ -102,6 +102,9 @@ public class SummaryServiceImpl extends BaseServiceImpl<SummaryDto, Summary, Sum
         summary.setDateSummary(nextDay);
         // 获取每日明细信息
         DetailStatisticsDto detailStatisticsDto = detailService.detailStatisticsByDate(nextDay);
+        if (Objects.isNull(detailStatisticsDto)) {
+            return Boolean.FALSE;
+        }
         summary.setBillSum(detailStatisticsDto.getBillTotalSum());
         summary.setReceivableSum(detailStatisticsDto.getReceivableSum());// 总收
         summary.setPutSum(detailStatisticsDto.getPutSum());// 总放
