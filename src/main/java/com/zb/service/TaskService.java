@@ -1,6 +1,7 @@
 package com.zb.service;
 
 import com.zb.dto.TaskDto;
+import com.zb.dto.UserDto;
 import com.zb.request.TaskRequest;
 
 import java.util.Date;
@@ -14,5 +15,5 @@ public interface TaskService extends BaseService<TaskDto>{
     Boolean insertList(TaskRequest taskRequest);
 
     // 删除第二天任务
-    Boolean deleteTasks(Integer businessId, Date nextDay);
+    Boolean deleteTasks(UserDto loginUser, Integer businessId, Date nextDay);
 }

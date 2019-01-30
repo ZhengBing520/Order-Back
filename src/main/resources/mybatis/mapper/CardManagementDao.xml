@@ -9,7 +9,7 @@
                 and card_name like concat('%', #{cardName} ,'%')
             </if>
         </where>
-
+        order by t.id desc
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zb.entity.CardManagement">

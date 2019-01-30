@@ -99,7 +99,7 @@ public class BusinessServiceImpl extends BaseServiceImpl<BusinessDto, Business, 
             commissionService.deleteByBusinessId(id);
 
             // 删除任务
-            taskService.deleteTasks(id, nextDay);
+            taskService.deleteTasks(null, id, nextDay);
 
         }
         return flag;

@@ -37,14 +37,14 @@ public class TaskController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "当前页号", dataType = "int", paramType = "path", required = true),
             @ApiImplicitParam(name = "pageSize", value = "每页显示记录数", dataType = "int", paramType = "path", required = true),
-            @ApiImplicitParam(name = "businessDto", value = "参数对象", dataType = "BusinessDto", paramType = "body", required = false)
+            @ApiImplicitParam(name = "taskDto", value = "参数对象", dataType = "TaskDto", paramType = "body", required = false)
     })
     @RequestMapping(value = "/queryPageableData/{pageNum}/{pageSize}", method = RequestMethod.POST)
     public PageableData<TaskDto> queryPageableData(@PathVariable(value = "pageNum") Integer pageNum,
                                                          @PathVariable(value = "pageSize") Integer pageSize,
-                                                         @RequestBody(required = false) TaskDto TaskDto) throws Exception {
+                                                         @RequestBody(required = false) TaskDto taskDto) throws Exception {
 
-        return taskService.queryPageableData(pageNum, pageSize, TaskDto);
+        return taskService.queryPageableData(pageNum, pageSize, taskDto);
     }
 
     @ApiOperation(value = "删除任务信息 ", notes = "删除任务信息")

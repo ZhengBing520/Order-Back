@@ -3,17 +3,19 @@
 <mapper namespace="com.zb.dao.TaskDao">
 
     <insert id="insertList">
-        INSERT INTO `t_task` (`business_id`, `date_task`, `name_task`,`keywords`, `spec`, `require`, `time_doing`, `buy_num`, `price`)
+        INSERT INTO `t_task` (`business_id`,create_id, `date_task`, `name_task`,`keywords`, `spec`, `require`, `time_doing`, `buy_num`, `price`)
         values
         <foreach collection="list" item="task" separator=",">
-            (#{task.businessId}, #{task.dateTask}, #{task.nameTask}, #{task.keywords}, #{task.spec}, #{task.require}, #{task.timeDoing}, #{task.buyNum}, #{task.price})
+            (#{task.businessId}, #{task.createId}, #{task.dateTask}, #{task.nameTask}, #{task.keywords}, #{task.spec}, #{task.require}, #{task.timeDoing}, #{task.buyNum}, #{task.price})
         </foreach>
     </insert>
 
     <select id="queryPageableData" resultType="com.zb.dto.TaskDto" parameterType="com.zb.dto.TaskDto">
         select t.id,t.business_id as businessId,b.name as businessName, t.date_task as dateTask, t.name_task as nameTask, t.keywords, t.spec, t.require, t.time_doing as timeDoing, t.buy_num as buyNum, t.price,
-        t.create_time as createTime, t.update_time as updateTime from t_task t
+        t.create_id as createId,u.real_name as realName, t.create_time as createTime, t.update_time as updateTime
+        from t_task t
         left join t_business b on b.id = t.business_id
+        left join t_user u on u.id = t.create_id
         <where>
             <if test="null != businessId">
                 and t.business_id = #{businessId}
@@ -28,7 +30,11 @@
                     AND t.`date_task` <= #{endTime}
                 ]]>
             </if>
+            <if test="null != createId">
+                and t.create_id = #{createId}
+            </if>
         </where>
+        order by t.id desc
     </select>
 
 
@@ -37,14 +43,28 @@
     </update>
 
     <select id="selectById" parameterType="int" resultType="com.zb.entity.Task">
-        select t.id,t.business_id as businessId,b.name as businessName, t.date_task as dateTask, t.name_task as nameTask, t.keywords, t.spec, t.require, t.time_doing as timeDoing, t.buy_num as buyNum, t.price,
-        t.create_time as createTime, t.update_time as updateTime from t_task t
-        left join t_business b on b.id = t.business_id
+        select t.id,t.business_id as businessId, t.date_task as dateTask, t.name_task as nameTask, t.keywords, t.spec, t.require, t.time_doing as timeDoing, t.buy_num as buyNum, t.price,
+        t.create_id as createId, t.create_time as createTime, t.update_time as updateTime from t_task t
         WHERE t.id = #{id}
     </select>
 
     <delete id="delete" parameterType="int">
         delete from t_task where id = #{id}
     </delete>
-    
+
+    <select id="selectCount" resultType="int" parameterType="com.zb.param.TaskParam">
+        select count(1) from t_task
+        <where>
+            <if test="null != businessId">
+                and business_id = #{businessId}
+            </if>
+            <if test="null != dateTask">
+                and date_task = #{dateTask}
+            </if>
+            <if test="null != createId">
+                and create_id = #{createId}
+            </if>
+        </where>
+
+    </select>
 </mapper>

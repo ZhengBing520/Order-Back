@@ -44,6 +44,8 @@ public abstract class BaseServiceImpl<D extends BaseDto, E extends BaseEntity, D
         if (pageSize == null || pageSize < 0) {
             pageSize = 10;
         }
+        // 设置其他查询条件
+        setParam(d);
         // 开启分页
         PageHelper.startPage(pageNum, pageSize);
         List<D> list = dao.queryPageableData(d);
@@ -53,6 +55,14 @@ public abstract class BaseServiceImpl<D extends BaseDto, E extends BaseEntity, D
         Integer pageSizeDb = userPage.getPageSize();
         pageableData = PageableData.createModel(totalCount, currentPage, pageSizeDb, list);
         return pageableData;
+    }
+
+    /**
+     * 设置参数条件
+     * @param d
+     */
+    protected void setParam(D d) {
+
     }
 
     @SuppressWarnings("unchecked")

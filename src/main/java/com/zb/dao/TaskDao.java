@@ -1,6 +1,7 @@
 package com.zb.dao;
 
 import com.zb.entity.Task;
+import com.zb.param.TaskParam;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,4 +24,11 @@ public interface TaskDao extends BaseDao<Task> {
      */
     @Delete("delete from t_task where business_id = #{businessId} and date_task = #{dateTask}")
     int deleteTasks(@Param("businessId") Integer businessId, @Param("dateTask") Date dateTask);
+
+    /**
+     * 查询任务条数
+     * @param taskParam
+     * @return
+     */
+    int selectCount(TaskParam taskParam);
 }

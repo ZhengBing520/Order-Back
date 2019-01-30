@@ -54,6 +54,11 @@ public class Task extends BaseEntity {
      */
     private BigDecimal price;
 
+    /**
+     * 导入任务用户ID
+     */
+    private Integer createId;
+
     public Integer getBusinessId() {
         return businessId;
     }
@@ -124,5 +129,13 @@ public class Task extends BaseEntity {
 
     public void setRequire(String require) {
         this.require = require;
+    }
+
+    public Integer getCreateId() {
+        return createId;
+    }
+
+    public void setCreateId(Integer createId) {
+        this.createId = createId;
     }
 }

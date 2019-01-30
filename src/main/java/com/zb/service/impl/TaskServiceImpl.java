@@ -1,18 +1,14 @@
 package com.zb.service.impl;
 
+import com.zb.common.Constant;
 import com.zb.common.utils.DateUtil;
 import com.zb.dao.TaskDao;
-import com.zb.dto.BusinessDto;
-import com.zb.dto.CommissionDto;
-import com.zb.dto.DetailDto;
-import com.zb.dto.TaskDto;
-import com.zb.entity.Commission;
+import com.zb.dto.*;
 import com.zb.entity.Task;
+import com.zb.param.TaskParam;
 import com.zb.request.TaskRequest;
-import com.zb.service.BusinessService;
-import com.zb.service.CommissionService;
-import com.zb.service.DetailService;
-import com.zb.service.TaskService;
+import com.zb.service.*;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,6 +35,9 @@ public class TaskServiceImpl extends BaseServiceImpl<TaskDto, Task, TaskDao> imp
     @Autowired
     CommissionService commissionService;
 
+    @Autowired
+    LoginService loginService;
+
     /**
      * 批量插入任务(导入的任务是第二天的，重复导入就覆盖)
      *
@@ -48,11 +47,18 @@ public class TaskServiceImpl extends BaseServiceImpl<TaskDto, Task, TaskDao> imp
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Boolean insertList(TaskRequest taskRequest) {
+        // 获取登录用户
+        UserDto loginUser = loginService.getLoginUser();
         // 通过商家名称找到商家id
         String businessName = taskRequest.getBusinessName();
         Assert.notNull(businessName, "商家名称不能为空");
         BusinessDto business = businessService.selectByName(businessName);
-        if (Objects.isNull(business)) {
+        if (!Objects.isNull(business)) {
+            // 修改商家的时间
+            BusinessDto dto = new BusinessDto();
+            BeanUtils.copyProperties(business, dto);
+            businessService.update(dto);
+        } else {
             // 新增商家
             business = new BusinessDto();
             business.setName(businessName);
@@ -68,17 +74,16 @@ public class TaskServiceImpl extends BaseServiceImpl<TaskDto, Task, TaskDao> imp
         List<CommissionDto> commissionDtoList = commissionService.selectCommissionListByBusinessId(id);
         Date nextDay = DateUtil.getBeginDayOfTomorrow();
         // 删除第二天任务
-        deleteTasks(id, nextDay);
+        deleteTasks(loginUser, id, nextDay);
         // 总单数
         Integer billTotal = taskList.size();
-        // 总价
-        Double totalPrice = 0D;
-        // 应收 总价 + 佣金
+        // 应收 (所有任务的应收 单个任务应收：单个总价 + 佣金)
         BigDecimal receivableDecimal = new BigDecimal(0);
-        // 放  总价 + 成本佣金
+        // 放  (所有任务的放 单个任务放：单个总价 + 成本佣金)
         BigDecimal putDecimal = new BigDecimal(0);
 
         for (Task task : taskList) {
+            task.setCreateId(loginUser.getId());
             task.setBusinessId(id);
             // 第二天
             task.setDateTask(nextDay);
@@ -86,18 +91,17 @@ public class TaskServiceImpl extends BaseServiceImpl<TaskDto, Task, TaskDao> imp
             // 佣金（通过总价找到佣金） 总价 = 单价 * 件数
             BigDecimal price = task.getPrice();
             Integer buyNum = task.getBuyNum();
-            // 总价
-            totalPrice += buyNum * price.doubleValue();
+            // 单个任务的总价 -- 计算佣金
+            BigDecimal totalPriceByOne = price.multiply(new BigDecimal(buyNum));
+            // 佣金
+            CommissionDto commissionDto = getReceivableToTask(commissionDtoList, totalPriceByOne.doubleValue());
+            if (!Objects.isNull(commissionDto)) {
+                receivableDecimal = receivableDecimal.add(totalPriceByOne.add(commissionDto.getCommission()));
+                putDecimal = putDecimal.add(totalPriceByOne.add(commissionDto.getCommissionCost()));
+            }
 
         }
 
-        // 佣金
-        CommissionDto commissionDto = getReceivableToTask(commissionDtoList, totalPrice);
-        BigDecimal totalPriceDecimal = new BigDecimal(totalPrice);
-        if (!Objects.isNull(commissionDto)) {
-            receivableDecimal = totalPriceDecimal.add(commissionDto.getCommission());
-            putDecimal = totalPriceDecimal.add(commissionDto.getCommissionCost());
-        }
         // 余 (应收-放)
         BigDecimal residue = receivableDecimal.subtract(putDecimal);
         int i = dao.insertList(taskList);
@@ -126,17 +130,32 @@ public class TaskServiceImpl extends BaseServiceImpl<TaskDto, Task, TaskDao> imp
 
     /**
      * 删除任务级联删除明细
-     *
-     * @param id
+     * @param loginUser
+     * @param businessId
      * @param nextDay
      * @return
      */
     @Override
-    public Boolean deleteTasks(Integer id, Date nextDay) {
-        int i = dao.deleteTasks(id, nextDay);
+    public Boolean deleteTasks(UserDto loginUser, Integer businessId, Date nextDay) {
+        // 判断能否删除，同一商家一天只能被同意用户删除
+        if (Objects.nonNull(loginUser)) {
+            TaskParam taskParam = new TaskParam(businessId, null, nextDay);
+            int count = dao.selectCount(taskParam);
+            if (0 < count) {
+                // 说明明天有任务
+                taskParam.setCreateId(loginUser.getId());
+                int i = dao.selectCount(taskParam);
+                if (0 >= i) {
+                    // 说明不是此用户导入的任务，不能导入
+                    throw new IllegalArgumentException("导入失败：同一商家一天只能被同一用户导入");
+                }
+            }
+        }
+
+        int i = dao.deleteTasks(businessId, nextDay);
         if (i > 0) {
             // 删除明细
-            detailService.deleteByBusinessIdAndDate(id, nextDay);
+            detailService.deleteByBusinessIdAndDate(businessId, nextDay);
         }
 
         return i > 0;
@@ -164,5 +183,20 @@ public class TaskServiceImpl extends BaseServiceImpl<TaskDto, Task, TaskDao> imp
 
         }
         return commissionDto;
+    }
+
+    @Override
+    protected void setParam(TaskDto taskDto) {
+        super.setParam(taskDto);
+        if (Objects.isNull(taskDto)) {
+            taskDto = new TaskDto();
+        }
+        // 获取登录用户信息
+        UserDto loginUser = loginService.getLoginUser();
+        if (Objects.equals(Constant.UserType.GENERAL, loginUser.getType())) {
+            // 普通用户，只能看到自己导入数据
+            taskDto.setCreateId(loginUser.getId());
+        }
+
     }
 }

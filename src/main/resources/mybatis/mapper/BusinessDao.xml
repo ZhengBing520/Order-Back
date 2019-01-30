@@ -13,10 +13,11 @@
             </if>
         </where>
 
+      order by t.update_time desc
     </select>
 
     <select id="selectByName" resultType="com.zb.entity.Business">
-        select id,name from t_business where name = #{businessName}
+        select id,`name`,`card_id` as cardId,referrer_id as referrerId from t_business where name = #{businessName}
     </select>
 
     <select id="selectCountByModelName" resultType="int">

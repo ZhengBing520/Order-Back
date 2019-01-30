@@ -83,6 +83,12 @@ public class TaskDto extends BaseDto {
     @ApiModelProperty(value = "结束时间")
     private Date endTime;
 
+    @ApiModelProperty("导入任务用户ID")
+    private Integer createId;
+
+    @ApiModelProperty("导入任务用户")
+    private String realName;
+
     public Integer getBusinessId() {
         return businessId;
     }
@@ -177,5 +183,21 @@ public class TaskDto extends BaseDto {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    public Integer getCreateId() {
+        return createId;
+    }
+
+    public void setCreateId(Integer createId) {
+        this.createId = createId;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 }
