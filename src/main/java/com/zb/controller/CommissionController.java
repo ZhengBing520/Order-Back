@@ -1,6 +1,8 @@
 package com.zb.controller;
 
+import com.zb.common.Constant;
 import com.zb.dto.CommissionDto;
+import com.zb.entity.Commission;
 import com.zb.model.PageableData;
 import com.zb.service.CommissionService;
 import io.swagger.annotations.Api;
@@ -33,7 +35,7 @@ public class CommissionController {
         return commissionService.get(id);
     }
 
-    @ApiOperation(value = "分页查询佣金信息", notes = "分页查询车辆信息）")
+    @ApiOperation(value = "分页查询佣金信息", notes = "分页查询佣金信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "当前页号", dataType = "int", paramType = "path", required = true),
             @ApiImplicitParam(name = "pageSize", value = "每页显示记录数", dataType = "int", paramType = "path", required = true),
@@ -54,5 +56,18 @@ public class CommissionController {
     public Boolean update(@RequestBody CommissionDto commissionDto) {
 
         return commissionService.update(commissionDto);
+    }
+
+    @ApiOperation(value = "分页查询默认佣金信息", notes = "分页查询默认佣金信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pageNum", value = "当前页号", dataType = "int", paramType = "path", required = true),
+            @ApiImplicitParam(name = "pageSize", value = "每页显示记录数", dataType = "int", paramType = "path", required = true)
+    })
+    @RequestMapping(value = "/queryDefaultCommission/{pageNum}/{pageSize}", method = RequestMethod.GET)
+    public PageableData<CommissionDto> queryPageableData(@PathVariable(value = "pageNum") Integer pageNum,
+                                                         @PathVariable(value = "pageSize") Integer pageSize) {
+        CommissionDto commissionDto = new CommissionDto();
+        commissionDto.setBusinessId(Constant.DEFAULT_COMMISSION_BUSINESS_ID);
+        return commissionService.queryPageableData(pageNum, pageSize, commissionDto);
     }
 }
