@@ -3,6 +3,7 @@ package com.zb.service.impl;
 import com.zb.common.Constant;
 import com.zb.dao.UserDao;
 import com.zb.dto.LoginDto;
+import com.zb.dto.ResetPasswordDto;
 import com.zb.dto.UserDto;
 import com.zb.entity.User;
 import com.zb.service.LoginService;
@@ -74,14 +75,17 @@ public class UserServiceImpl extends BaseServiceImpl<UserDto, User, UserDao> imp
     }
 
     @Override
-    public Boolean resetPwd(Integer id) {
-        User user = dao.selectById(id);
+    public Boolean resetPwd(ResetPasswordDto resetPasswordDto) {
+        if (Objects.isNull(resetPasswordDto)) {
+            throw new IllegalArgumentException("参数对象不能为空");
+        }
+        User user = dao.selectById(resetPasswordDto.getId());
         if (Objects.isNull(user)) {
             throw new IllegalArgumentException("没有此用户");
         }
         // 重置密码
-        String passwordNew = DigestUtils.md5DigestAsHex(Constant.DEFAULT_PWD.getBytes()).toUpperCase();
-        user.setPassword(passwordNew);
+//        String passwordNew = DigestUtils.md5DigestAsHex(resetPasswordDto.getNewPassword().getBytes()).toUpperCase();
+        user.setPassword(resetPasswordDto.getNewPassword());
 
         return update(entityToDto(user));
     }

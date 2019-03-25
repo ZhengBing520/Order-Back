@@ -1,5 +1,6 @@
 package com.zb.controller;
 
+import com.zb.dto.ResetPasswordDto;
 import com.zb.dto.UserDto;
 import com.zb.model.PageableData;
 import com.zb.service.UserService;
@@ -71,10 +72,10 @@ public class UserController {
     }
 
     @ApiOperation(value = "重置用户密码", notes = "重置用户密码")
-    @ApiImplicitParam(name = "id", value = "用户id", dataType = "int", paramType = "query", required = true)
-    @RequestMapping(value = "/resetPwd", method = RequestMethod.DELETE)
-    public Boolean resetPwd(@RequestParam("id") Integer id) {
+    @ApiImplicitParam(name = "resetPasswordDto", value = "参数对象", dataType = "ResetPasswordDto", paramType = "body", required = true)
+    @RequestMapping(value = "/resetPwd", method = RequestMethod.POST)
+    public Boolean resetPwd(@RequestBody ResetPasswordDto resetPasswordDto) {
 
-        return userService.resetPwd(id);
+        return userService.resetPwd(resetPasswordDto);
     }
 }

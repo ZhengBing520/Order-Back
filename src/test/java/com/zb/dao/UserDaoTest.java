@@ -26,8 +26,8 @@ public class UserDaoTest {
     @Test
     @Ignore
     public void md5() {
-        String s = DigestUtils.md5DigestAsHex(Constant.DEFAULT_PWD.getBytes());
-        System.out.println(s.toUpperCase());//DC483E80A7A0BD9EF71D8CF973673924
+        /*String s = DigestUtils.md5DigestAsHex(Constant.DEFAULT_PWD.getBytes());
+        System.out.println(s.toUpperCase());//DC483E80A7A0BD9EF71D8CF973673924*/
     }
 
     @Test

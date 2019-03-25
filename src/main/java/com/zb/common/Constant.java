@@ -17,8 +17,8 @@ public interface Constant {
 
     /**
      * 默认密码
-     */
-    String DEFAULT_PWD = "a123456";
+     *//*
+    String DEFAULT_PWD = "a123456";*/
 
     /**
      * 用户类型，0：普通用户，1：管理员

@@ -1,6 +1,7 @@
 package com.zb.service;
 
 import com.zb.dto.LoginDto;
+import com.zb.dto.ResetPasswordDto;
 import com.zb.dto.UserDto;
 
 /**
@@ -17,8 +18,8 @@ public interface UserService extends BaseService<UserDto> {
 
     /**
      * 重置密码
-     * @param id
+     * @param resetPasswordDto
      * @return
      */
-    Boolean resetPwd(Integer id);
+    Boolean resetPwd(ResetPasswordDto resetPasswordDto);
 }
