@@ -1,6 +1,6 @@
 # Tomcat settings
 server:
-  port: 9090
+  port: 9091
   compression:
     enabled: true
   tomcat:
@@ -10,6 +10,8 @@ spring:
   redis:
     host: 10.0.11.22
     port: 63799
+  profiles:
+    active: dev
   datasource:
     druid:
       url: jdbc:mysql://localhost:3306/order?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8

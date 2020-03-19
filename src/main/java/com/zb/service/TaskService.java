@@ -16,4 +16,6 @@ public interface TaskService extends BaseService<TaskDto>{
 
     // 删除第二天任务
     Boolean deleteTasks(UserDto loginUser, Integer businessId, Date nextDay);
+
+    Boolean deleteByIds(Integer businessId, Integer[] ids);
 }

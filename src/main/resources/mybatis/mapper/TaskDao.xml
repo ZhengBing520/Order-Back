@@ -39,7 +39,7 @@
 
 
     <update id="update" parameterType="com.zb.entity.Task">
-        update t_task set date_task = #{dateTask}, `name_task` = #{nameTask},keywords = #{keywords},spec = #{spec},require = #{require}, time_doing = #{timeDoing}, buy_num = #{buyNum}, price = #{price}, update_time = #{updateTime} WHERE id = #{id}
+        update t_task set date_task = #{dateTask}, `name_task` = #{nameTask},keywords = #{keywords},spec = #{spec},`require` = #{require}, time_doing = #{timeDoing}, buy_num = #{buyNum}, price = #{price}, update_time = #{updateTime} WHERE id = #{id}
     </update>
 
     <select id="selectById" parameterType="int" resultType="com.zb.entity.Task">
@@ -66,5 +66,28 @@
             </if>
         </where>
 
+    </select>
+
+    <delete id="deleteByIdS" >
+        delete from t_task where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        and date_task = #{dateTask}
+    </delete>
+
+    <select id="findAll" resultType="com.zb.entity.Task">
+        select t.id,t.business_id as businessId, t.date_task as dateTask, t.name_task as nameTask, t.keywords,
+        t.spec, t.require, t.time_doing as timeDoing, t.buy_num as buyNum, t.price,
+        t.create_id as createId, t.create_time as createTime, t.update_time as updateTime
+        from t_task t
+        <where>
+            <if test="null != businessId">
+                and t.business_id = #{businessId}
+            </if>
+            <if test="null != dateTask">
+                and t.date_task = #{dateTask}
+            </if>
+        </where>
     </select>
 </mapper>

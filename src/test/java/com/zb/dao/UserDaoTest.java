@@ -18,6 +18,7 @@ import javax.annotation.Resource;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Ignore
 public class UserDaoTest {
 
     @Autowired

@@ -19,10 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Created by bzheng on 2019/1/6.
@@ -54,11 +51,13 @@ public class BusinessServiceImpl extends BaseServiceImpl<BusinessDto, Business, 
         return id;
     }
 
+
     @Override
     public Boolean update(BusinessDto businessDto) {
         if (checkBusinessNameUnique(businessDto.getName(), businessDto.getId())) {
             throw new IllegalArgumentException("商家名称已存在");
         }
+
         return super.update(businessDto);
     }
 

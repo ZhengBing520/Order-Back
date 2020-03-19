@@ -31,4 +31,19 @@ public interface TaskDao extends BaseDao<Task> {
      * @return
      */
     int selectCount(TaskParam taskParam);
+
+    /**
+     * 批量删除任务
+     * @param ids
+     * @param dateTask 时间
+     */
+    int deleteByIdS(@Param("ids") Integer[] ids, @Param("dateTask") Date dateTask);
+
+    /**
+     * 查询任务
+     * @param businessId 商家id
+     * @param dateTask 时间
+     * @return
+     */
+    List<Task> findAll(@Param("businessId") Integer businessId, @Param("dateTask") Date dateTask);
 }

@@ -19,7 +19,7 @@ INSERT INTO  `t_commission` (`business_id`, `price_min`, `price_max`, `commissio
 INSERT INTO  `t_commission` (`business_id`, `price_min`, `price_max`, `commission`, `commission_cost`, `create_time`, `update_time`) VALUES ('0', '100', '299', '18.00', '16.00', now(), now());
 INSERT INTO  `t_commission` (`business_id`, `price_min`, `price_max`, `commission`, `commission_cost`, `create_time`, `update_time`) VALUES ('0', '300', '499', '20.00', '17.00', now(), now());
 INSERT INTO  `t_commission` (`business_id`, `price_min`, `price_max`, `commission`, `commission_cost`, `create_time`, `update_time`) VALUES ('0', '500', '999', '22.00', '18.00', now(), now());
-INSERT INTO  `t_commission` (`business_id`, `price_min`, `price_max`, `commission`, `commission_cost`, `create_time`, `update_time`) VALUES ('0', '1000', '1490', '24.00', '20.00', now(), now());
+INSERT INTO  `t_commission` (`business_id`, `price_min`, `price_max`, `commission`, `commission_cost`, `create_time`, `update_time`) VALUES ('0', '1000', '1499', '24.00', '20.00', now(), now());
 INSERT INTO  `t_commission` (`business_id`, `price_min`, `price_max`, `commission`, `commission_cost`, `create_time`, `update_time`) VALUES ('0', '1500', '1999', '26.00', '22.00', now(), now());
 INSERT INTO  `t_commission` (`business_id`, `price_min`, `price_max`, `commission`, `commission_cost`, `create_time`, `update_time`) VALUES ('0', '2000', '2499', '30.00', '24.00', now(), now());
 INSERT INTO  `t_commission` (`business_id`, `price_min`, `price_max`, `commission`, `commission_cost`, `create_time`, `update_time`) VALUES ('0', '2500', '2999', '35.00', '27.00', now(), now());

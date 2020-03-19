@@ -55,12 +55,23 @@ public class TaskController {
         return taskService.deleteById(id);
     }
 
-    @ApiOperation(value = "新增任务信息 ", notes = "新增任务信息")
-    @ApiImplicitParam(name = "businessDto", value = "参数对象", dataType = "BusinessDto", paramType = "body", required = true)
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Integer create(@RequestBody TaskDto TaskDto) {
+    @ApiOperation(value = "批量删除任务信息 ", notes = "批量删除任务信息")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "businessId", value = "商家ID", dataType = "int", paramType = "query", required = true),
+        @ApiImplicitParam(name = "ids", value = "任务id数组", dataType = "int", paramType = "query", allowMultiple = true, required = true)
+    })
+    @RequestMapping(value = "/dels", method = RequestMethod.DELETE)
+    public Boolean dels(@RequestParam("businessId") Integer businessId, @RequestParam("ids") Integer[] ids) {
 
-        return taskService.insert(TaskDto);
+        return taskService.deleteByIds(businessId, ids);
+    }
+
+    @ApiOperation(value = "新增任务信息 ", notes = "新增任务信息")
+    @ApiImplicitParam(name = "taskDto", value = "参数对象", dataType = "TaskDto", paramType = "body", required = true)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public Integer create(@RequestBody TaskDto taskDto) {
+
+        return taskService.insert(taskDto);
     }
     @ApiOperation(value = "导入任务列表 ", notes = "导入任务列表")
     @ApiImplicitParam(name = "taskRequest", value = "任务对象", dataType = "TaskRequest", paramType = "body", required = true)
@@ -71,10 +82,10 @@ public class TaskController {
     }
 
     @ApiOperation(value = "修改任务信息 ", notes = "修改任务信息")
-    @ApiImplicitParam(name = "businessDto", value = "参数对象", dataType = "BusinessDto", paramType = "body", required = true)
+    @ApiImplicitParam(name = "taskDto", value = "参数对象", dataType = "TaskDto", paramType = "body", required = true)
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
-    public Boolean update(@RequestBody TaskDto TaskDto) {
+    public Boolean update(@RequestBody TaskDto taskDto) {
 
-        return taskService.update(TaskDto);
+        return taskService.update(taskDto);
     }
 }
